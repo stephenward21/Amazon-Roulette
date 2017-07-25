@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b92f7577-4012-4de8-9f3b-c27567775804" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.css" afterPath="$PROJECT_DIR$/src/App.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,24 +14,14 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="6" lean-forward="false" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+            <state relative-caret-position="270">
+              <caret line="15" column="22" lean-forward="false" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="App.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/App.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="37" lean-forward="false" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -48,6 +38,7 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/App.css" />
+        <option value="$PROJECT_DIR$/src/App.js" />
       </list>
     </option>
   </component>
@@ -223,21 +214,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="6" lean-forward="false" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="5" column="37" lean-forward="false" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="22" lean-forward="false" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
