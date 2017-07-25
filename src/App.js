@@ -14,6 +14,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
           <h1>00000000</h1>
+          <h1>00000000</h1>
       </div>
     );
   }
