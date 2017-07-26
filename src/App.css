@@ -22,3 +22,18 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.name, .canvas {
+  margin-top: 80px;
+}
+
+.empty-form {
+  width: 600px;
+}
+
+.form-whole {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
