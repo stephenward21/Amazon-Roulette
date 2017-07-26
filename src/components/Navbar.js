@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Login from './Login';
 import {Link} from 'react-router-dom';
 import $ from 'jquery';
-import {Modal, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
+import {Modal, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem, Form, FormGroup, ControlLabel, FormControl, Col} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
 
 class NavBar extends Component{
@@ -39,10 +39,9 @@ class NavBar extends Component{
 							<LinkContainer to="/register">
 								<NavItem eventKey={1}>Register</NavItem>
 							</LinkContainer>
-                            <NavItem eventKey={2} onClick={this.open.showModal}>
+                            <NavItem eventKey={2} onClick={this.open}>
 								Login
 							</NavItem>
-								<div>
 									<Modal className="modal-container"
 									  show={this.state.showModal}
 									  onHide={this.close}
@@ -52,13 +51,14 @@ class NavBar extends Component{
 									  <Modal.Header closeButton>
 										<Modal.Title>Modal title</Modal.Title>
 									  </Modal.Header>
-										{Login}
+										<Modal.Body>
+											<Login/>
+										</Modal.Body>
 									  <Modal.Footer>
 										<Button onClick={this.close}>Close</Button>
 										<Button bsStyle="primary">Save changes</Button>
 									  </Modal.Footer>
 									</Modal>
-								</div>
 							<NavItem eventKey={3}>
 								Groups
 							</NavItem>
