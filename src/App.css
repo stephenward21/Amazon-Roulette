@@ -21,8 +21,22 @@
     font-size: 18px;
 }
 
-.name, .canvas {
-  margin-top: 80px;
+.name{
+  margin-top: 40px;
+}
+
+.canvas {
+  display: block;
+  
+}
+
+.buttons {
+  float: left;
+  margin-left: 80px;
+}
+
+.butt {
+  margin: 10px;
 }
 
 .empty-form {

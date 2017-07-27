@@ -22,7 +22,7 @@ function drawCanvas({ctx, time}) {
 		// b = '#000000';
 		// return [r, g, b]
 
-		return r = "#FF0000"
+		// return r = "#FF0000"
 		return g = "#006600"
 		return b = "#000000"
 		// // return '#' + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);
