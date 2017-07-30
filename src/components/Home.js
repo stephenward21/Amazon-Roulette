@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { DropdownButton, MenuItem } from 'react-bootstrap';
+import { DropdownButton, MenuItem, Jumbotron } from 'react-bootstrap';
 import drawRoulette from '../roulette';
 
 
@@ -25,33 +25,11 @@ class Home extends Component{
 		
 		return(
 			<div>
+				<Jumbotron>
+					<h1 className="home-page-title">AMAZON ROULETTE</h1>
+					<p>The second most fun you'll have playing Roulette</p>
+				</Jumbotron>
 				<div className="buttons">
-				  <DropdownButton bsStyle="primary" className="butt" title='Minimum Price'id={`dropdown-basic`}>
-				     <MenuItem eventKey="1">$10</MenuItem>
-				     <MenuItem eventKey="2">$20</MenuItem>
-				     <MenuItem eventKey="3">$30</MenuItem>
-				     <MenuItem eventKey="4">$40</MenuItem>
-				     <MenuItem eventKey="5">$50</MenuItem>
-				     <MenuItem eventKey="6">$75</MenuItem>
-				     <MenuItem eventKey="7">$100</MenuItem>
-				     <MenuItem eventKey="8">$125</MenuItem>
-				     <MenuItem eventKey="9">$150</MenuItem>
-				     <MenuItem eventKey="10">$200</MenuItem>
-				     <MenuItem eventKey="11">$250</MenuItem>
-				   </DropdownButton>
-				   <DropdownButton bsStyle="primary" className="butt" title='Maximum Price'id={`dropdown-basic`}>
-				     <MenuItem eventKey="1">$20</MenuItem>
-				     <MenuItem eventKey="2">$30</MenuItem>
-				     <MenuItem eventKey="3">$40</MenuItem>
-				     <MenuItem eventKey="4">$50</MenuItem>
-				     <MenuItem eventKey="5">$75</MenuItem>
-				     <MenuItem eventKey="6">$100</MenuItem>
-				     <MenuItem eventKey="7">$125</MenuItem>
-				     <MenuItem eventKey="8">$150</MenuItem>
-				     <MenuItem eventKey="9">$200</MenuItem>
-				     <MenuItem eventKey="10">$250</MenuItem>
-				     <MenuItem eventKey="11">$300+</MenuItem>
-				   </DropdownButton>
 				    <DropdownButton bsStyle="primary" className="butt" title='Category'id={`dropdown-basic`}>
 				     <MenuItem eventKey="1">Electronics</MenuItem>
 				     <MenuItem eventKey="2">Games</MenuItem>
