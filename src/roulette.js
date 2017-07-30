@@ -3,7 +3,6 @@ export default function() {
 
 
 	var options = ["Electronics", "Games", "Books", "Outdoors", "Jewelry", "Kindles", "Movies", "Music", "Kids" ]
-	console.log(options)
 	var startAngle = 0;
 	var arc = Math.PI / (options.length / 2);
 	var spinTimeout = null;
@@ -121,6 +120,7 @@ export default function() {
 	  ctx.save();
 	  ctx.font = 'bold 30px Helvetica, Arial';
 	  var text = options[index]
+	  console.log(text)
 	  ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
 	  ctx.restore();
 	  console.log(startAngle) 

@@ -9,25 +9,36 @@ class Home extends Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-			options: []
+			options: ['Games', 'Electronics', 'Jewelry']
 		}
 		
 
 	}
-	componentDidMount() {
+	componentDidMount(props) {
 		drawRoulette()
 	}	
 	
 
 
 	render(){
+		var noptions = [];
+		this.state.options.map((categories, index) =>{
+			noptions.push(
+				<p key={index}>
+					{categories}
+				</p>
+
+			)
+		});
+
 
 		
 		return(
 			<div>
 				<Jumbotron>
 					<h1 className="home-page-title">AMAZON ROULETTE</h1>
-					<p>The second most fun you'll have playing Roulette</p>
+					<p>The second most fun you&#39;ll have playing Roulette</p>
+					<div>{noptions}</div> 
 				</Jumbotron>
 				<div className="buttons">
 				    <DropdownButton bsStyle="primary" className="butt" title='Category'id={`dropdown-basic`}>
@@ -40,7 +51,7 @@ class Home extends Component{
 				     <MenuItem eventKey="7">Movies</MenuItem>
 				     <MenuItem eventKey="8">Music</MenuItem>
 				     <MenuItem eventKey="9">Kids</MenuItem>
-				   </DropdownButton>
+				   	</DropdownButton>
 				</div>
 				<canvas className="canvas" width="500px" height="500px" id="canvas"/>
 				<input className="btn btn-primary" type="button" value="spin" id='spin' onClick={drawRoulette.spin} />
