@@ -11,8 +11,6 @@ class Home extends Component{
 		this.state = {
 			options: []
 		}
-
-		// this.handleSpin = this.handleSpin.bind(this);
 		
 
 	}
