@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "amazon-product-api": "^0.4.4",
+    "bcrypt-nodejs": "0.0.3",
     "jquery": "^3.2.1",
     "mysql": "^2.13.0",
     "react": "^15.6.1",
