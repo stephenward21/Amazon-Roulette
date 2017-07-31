@@ -1,15 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+
+var config = require('../config/config');
 var amazon = require('amazon-product-api')
-var config = require('./config')
 
-var client = amazon.createClient({
-  awsId: config.awsId,
-  awsSecret: config.awsSecret,
-  awsTag: config.awsTag
-
-});
 
 
 var connection = mysql.createConnection({
@@ -17,6 +12,14 @@ var connection = mysql.createConnection({
     user: config.user,
     password: config.password,
     database: config.database
+});
+
+
+var client = amazon.createClient({
+ awsId: config.awsId,
+ awsSecret: config.awsSecret,
+ awsTag: config.awsTag
+
 });
 
 connection.connect();
