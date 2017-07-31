@@ -2,7 +2,7 @@
 export default function() {
 
 
-	var options = ["Electronics", "Games", "Books", "Outdoors", "Jewelry", "Kindles", "Movies", "Music", "Kids" ]
+	var options = ["Electronics",  "Books", "Outdoors", "Jewelry", "Kindles", "Movies", "Music", "Kids" ]
 	var startAngle = 0;
 	var arc = Math.PI / (options.length / 2);
 	var spinTimeout = null;
@@ -28,11 +28,11 @@ export default function() {
 	  var phase = 0;
 	  var center = 128;
 	  var width = 127;
-	  var frequency = Math.PI*2/maxitem;
+	  var frequency = Math.PI*8/maxitem;
 	  
-	  var red   = Math.sin(frequency*item+2+phase) * width + center;
-	  var green = Math.sin(frequency*item+0+phase) * width + center;
-	  var blue  = Math.sin(frequency*item+4+phase) * width + center;
+	  var red   = Math.sin(frequency*item+0+phase) * width + center;
+	  var green = Math.sin(frequency*item+2+phase) * width + center;
+	  var blue  = Math.sin(frequency*item+0+phase) * width + center;
 	  
 	  return RGB2Color(red,green,blue);
 	}
@@ -93,9 +93,9 @@ export default function() {
 	}
 
 	function spin() {
-	  var spinAngleStart = Math.random() * 20 + 10;
+	  var spinAngleStart = Math.random() * 2 + 10;
 	  spinTime = 0;
-	  spinTimeTotal = Math.random() *  + 4 * 1000;
+	  spinTimeTotal = Math.random() *  + 20 * 1000;
 	  rotateWheel();
 	}
 
