@@ -79,7 +79,7 @@ router.post('/register',(req,res)=>{
     const password = bcrypt.hashSync(req.body.password);
 
     const checkEmail = new Promise((resolve,reject)=>{
-        const checkEmailQuery = 'SELECT * FROM users WHERE email = ?';
+        const checkEmailQuery = 'SELECT * FROM user WHERE email = ?';
         connection.query(checkEmailQuery,[email], (error,results)=>{
             if(error) throw error;
             if(results.length > 0){
@@ -93,9 +93,9 @@ router.post('/register',(req,res)=>{
         ()=>{
             var insertIntoCust = "INSERT INTO customers (name, address, city, state) VALUES (?,?,?,?)";
             connection.query(insertIntoCust,[name,address,city,state], (error,results)=>{
-                const newID = results.insertId
-                var insertQuery = 'INSERT INTO users (uid, email, password) VALUES (?,?,?)';
-                connection.query(insertQuery, [newID, password, email], (error2, results2)=>{
+                const newID = results.insertId;
+                var insertQuery = 'INSERT INTO user (uid, email, password) VALUES (?,?,?)';
+                connection.query(insertQuery, [newID, email, password], (error2, results2)=>{
                     if(error2){
                         res.json({
                             msg: error2
