@@ -68,7 +68,7 @@ class Register extends Component {
 			this.props.history.push('/');
 		}else if(nextProps.registerResponse.msg === 'userAlreadyExists'){
 			console.log('used');
-			this.seState({
+			this.setState({
 				registerMessage: 'Sorry, this username is taken'
 			})
 		}
@@ -78,7 +78,7 @@ class Register extends Component {
 		
 		return(
 			<div className="register-wrapper">
-				<h1 className="text-danger"></h1>
+				<h1 className="text-danger">{this.state.registerMessage}</h1>
 				<Form horizontal className="form-whole" onSubmit={this.handleRegistration}>
 					<FormGroup className="name"controlId="formHorizontalName" validationState={this.state.nameError}>
 						<Col  componentClass={ControlLabel} sm={2}>
@@ -133,7 +133,7 @@ class Register extends Component {
 					<FormGroup>
 						<Col smOffset={2} sm={10}>
 							<Button bsStyle="primary" bsSize="small" type="submit">
-								Register
+								SIGN UP!
 							</Button>
 						</Col>
 					</FormGroup>

@@ -58,5 +58,9 @@
 .home-page-title{
     font-family: 'Permanent Marker', cursive;
     color: #FBC02D !important;
+}
 
+.login-buttons{
+  margin-top: 52px;
+  margin-left: 80px;
 }
