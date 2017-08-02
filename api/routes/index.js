@@ -5,8 +5,12 @@ var router = express.Router();
 var mysql = require('mysql');
 var bcrypt = require('bcrypt-nodejs')
 var config = require('../config/config');
+
 // var amazon = require('amazon-product-api')
 var amazon = require('amazon-affiliate-api');
+
+
+var randToken = require('rand-token');
 
 
 
@@ -158,8 +162,9 @@ router.post('/register',(req,res)=>{
             var insertIntoCust = "INSERT INTO customers (name, address, city, state) VALUES (?,?,?,?)";
             connection.query(insertIntoCust,[name,address,city,state], (error,results)=>{
                 const newID = results.insertId;
-                var insertQuery = 'INSERT INTO user (uid, email, password) VALUES (?,?,?)';
-                connection.query(insertQuery, [newID, email, password], (error2, results2)=>{
+                var token = randToken.uid(40);
+                var insertQuery = 'INSERT INTO user (uid, email, password, token) VALUES (?,?,?,?)';
+                connection.query(insertQuery, [newID, email, password, token], (error2, results2)=>{
                     if(error2){
                         res.json({
                             msg: error2
@@ -167,7 +172,8 @@ router.post('/register',(req,res)=>{
                     }else{
                         res.json({
                             msg: 'userInserted',
-                            name: name
+                            name: name,
+                            token: token
                         });
                     }
                 });
@@ -180,4 +186,58 @@ router.post('/register',(req,res)=>{
     )
 });
 
+router.post('/', (req,res)=>{
+    var email = req.body.email;
+    var password = req.body.password;
+    var checkLoginQuery = 'SELECT * FROM user WHERE email = ?';
+    connection.query(checkLoginQuery, [email], (error,results)=>{
+        if(error) throw error;
+        if(results.length === 0){
+            res.json({
+                msg: 'badUserName'
+            });
+        }else{
+            var checkHash = bcrypt.compareSync(password, results[0].password);
+            if(checkHash){
+                const updateToken = 'UPDATE user SET token=?, WHERE email=?'
+                var token = randToken.uid(40);
+                connection.query(updateToken,[token,email],(error2,results2)=>{
+                    console.log(results);
+                    res.json({
+                        msg: 'loginSuccess',
+                        name: results[0].customerName,
+                        token: token
+                    })
+                })
+            }else{
+                res.joson({
+                    msg: 'wrongPassword'
+                })
+            }
+        }
+    })
+});
+
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
