@@ -45,19 +45,17 @@ router.get('/', function(req, res, next) {
     // }).catch(function(err){
     //     console.log("=================")
     // });
-
-
    
     var promiseArray = [];
     for (let i = 1; i <= 10; i++){
         var aPromise = new Promise((resolve, reject)=>{
             client.itemSearch({
-                searchIndex: 'Baby',
+                searchIndex: 'Electronics',
                 itemPage: i,
                 Availability: 'Available',
                 Condition: 'All',
                 // Sort: 'price',
-                BrowseNode: '166736011',
+                BrowseNode: '172546',
                 responseGroup: 'ItemAttributes'
             }).then(function(results){
                 var priceArray = [];
@@ -87,50 +85,48 @@ router.get('/', function(req, res, next) {
     }
 
 	Promise.all(promiseArray).then((data)=>{
-		// res.json(data)
-        for (let i = 0; i < data[0].length; i++){
-            var newData = data[0].sort(function(a,b){
-                return parseFloat(a.Price) - parseFloat(b.Price)
-                console.log(newData)
-            })
-            
-        }
+		res.json(data)
+        // console.log(data[0].length)
+
+    //     var randNumb = Math.floor(Math.random()*10);
+    //     var randNumb2 = Math.floor(Math.random()*10);
+    //     // console.log(randNumb)
+    //     // console.log(randNumb2)
+    //     var productArray = [];
+    //     productArray.push({
+    //         ASIN: data[randNumb][randNumb2].ASIN,
+    //         Price: data[randNumb][randNumb2].Price
+    //     })
+    //     console.log(productArray[0])
+    //     // var minPrice = 
+    //     // var maxPrice = 
+    //     if (productArray[0].Price > 1990 && productArray[0].Price < 6000){
+    //         client.cartCreate({
+    //           items:[{
+    //             ASIN: productArray[0].ASIN,
+    //             Quantity: 1,
+    //           }]
+    //         }).then(function(results){
+    //           res.json(results);
+    //         }).catch(function(err){
+    //           res.json(err);
+    //         });
+    //     }else{
+    //         console.log("Price out of range!")
+    //     }
 
             
-        // console.log(data[0][1].Title)
-        // for (let i = 0; i < data.length; i++){
-        //     var newData = data[i].sort(function(a,b){
-        //         return parseFloat(a.Price) - parseFloat(b.Price);
-        //     })
-        //     res.json(newData)
-        // }
+    //     console.log(data[0][1].Title)
+    //     for (let i = 0; i < data.length; i++){
+    //         var newData = data[i].sort(function(a,b){
+    //             return parseFloat(a.Price) - parseFloat(b.Price);
+    //         })
+    //         res.json(newData)
+    //     }
         
         
     });
         
-        // for (let i = 0; i < data.length; i++){
-        //     if()
-        // }
-        // client.cartCreate({
-        //   items:[{
-        //     ASIN: data[0][0].ASIN,
-        //     Quantity: 1,
-        //   }]
-        // }).then(function(results){
-        //   res.json(results);
-        // }).catch(function(err){
-        //   res.json(err);
-        // });
-        //     for (let i = 0; i < data.length; i++){
-        //         var browseNode = data[0][i].BrowseNode;
-        //         var asin = data[0][i].ASIN;
-        //         var title = data[0][i].Title;
-        //         var price = data[0][i].Price;
-
-
-        //     }
-        
-        // data[0-9][0-9]
 
 		
 	    
