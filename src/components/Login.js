@@ -55,7 +55,7 @@ render() {
     return(
       <Form horizontal onSubmit={this.handleLogin}>
         <FormGroup controlId="formHorizontalName" >
-            <Col componentClass={ControlLabel} sm={2}>
+            <Col className="email-title" componentClass={ControlLabel} sm={4}>
                 Email
             </Col>
             <Col sm={10}>
@@ -63,11 +63,11 @@ render() {
             </Col>
         </FormGroup>
         <FormGroup controlId="formHorizontalName">
-            <Col componentClass={ControlLabel} sm={2}>
+            <Col componentClass={ControlLabel} sm={4}>
                 Password
             </Col>
             <Col sm={10}>
-                <FormControl id="password" type="Password" name="Password" placeholder="Password" />
+                <FormControl id="password" type="Password" name="loginPassword" placeholder="Password" />
             </Col>
             <Col>
                 <ButtonToolbar className="login-buttons">
