@@ -2,7 +2,7 @@
 export default function() {
 
 
-	var options = ["Electronics",  "Books", "Tools & Hardware", "Beauty", "Video Games", "Movies", "Music", "Kids Toys", "Kitchen", "Baby" ]
+	var options = ["Electronics",  "Books", "Tools & Hardware", "Beauty", "Video Games", "Music", "Kids Toys", "Baby" ]
 	var startAngle = 0;
 	var arc = Math.PI / (options.length / 2);
 	var spinTimeout = null;
@@ -28,7 +28,7 @@ export default function() {
 	  var phase = 0;
 	  var center = 128;
 	  var width = 127;
-	  var frequency = Math.PI*10/maxitem;
+	  var frequency = Math.PI*8/maxitem;
 	  
 	  var red   = Math.sin(frequency*item+0+phase) * width + center;
 	  var green = Math.sin(frequency*item+2+phase) * width + center;
