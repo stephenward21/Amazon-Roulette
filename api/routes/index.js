@@ -34,44 +34,73 @@ connection.connect();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    // client.itemSearch({
-    //     searchIndex: 'Books',
-    //     BrowseNode: '51546011',
-    //     responseGroup: 'ItemAttributes'
-    // }).then(function(results){
-    //     res.json(results)
-    //     console.log(results.Items.Item[0].ItemAttributes.Title)
-    //     console.log(results.Items.Request.ItemSearchRequest.BrowseNode)
-    // }).catch(function(err){
-    //     console.log("=================")
-    // });
+
+    var categories = {
+        Books:['51546011', '16266351', '16266361', '16266381', '16266391', '16266401', '16266411', '16266421', '16266431', '16266441', '16266461', '16266471', '16266481', '16266491', '16266501', '16266511', '16266521', '16266531', '16266551', '16266541', '16266561'],
+        Music: ['465672', '4650230011', '468040', '359372011', '714574', '13650871', '301756', '116860011', '30', '31', '265640', '173425', '173429', '67204', '85', '16', '7', '32', '2231705011', '67207', '34', '35', '36', '37', '39', '40', '42', '33', '289122', '302125', '602072', '602074', '468304', '5196', '468300', '602076', '468308', '13463651', '5234', '5238', '470998', '5240', '301405011', '299603011', '13463691', '225371', '300067011', '5255', '510676', '67178', '510678', '513060', '162409011', '2231704011', '468418', '2231701011', '67220', '67222', '408256', '5260', '36712', '84', '63654', '63681', '63690', '63700', '63699', '63701', '2231706011', '67208', '468414', '468416', '63893', '63894', '63930', '500060', '63897', '63927', '598152', '500060', '554380011', '301415011', '554373011', '554375011', '67180', '67183', '67185', '470506'],
+        Tools: ['13397451', '251266011', '328182011', '511228'],
+        Toys: ['236509011', '1273021011', '2237944011', '2309681011', '276201011', '723486011', '2899443011', '293107011', '236510011', '347076011', '268626011', '276221011', '333907011'],
+        Baby: ['165797011', '166736011', '166835011', '166764011', '166777011', '166828011', '239226011', '695338011', '166804011', '166863011'],
+        Electronics: ['172532', '3224438011', '11042251', '172546', '172540', '2252931011', '173243', '172664', '3224462011', '173541', '172526'],
+        VideoGames: ['229647', '229575', '6427814011', '14220161', '6469269011'],
+        Beauty: ['51570011', '11055981', '11055991', '11062741', '11059581', '11058281', '11060451']
+    }
    
+    var theTimer = 0
+    var runAmazonRun = [];
+    for (let cat in categories) {
+        // console.log(categories[cat]);
+        // console.log("==========================")
+        categories[cat].map((tempBrowseNode,i)=>{
+            theTimer++
+            runAmazonRun.push(cat, tempBrowseNode)
+            setTimeout(()=>{
+                console.log(i,"--",cat,"====",tempBrowseNode);
+                console.log("==========================")
+                runItemSearch(cat, tempBrowseNode);
+            }, 10000*theTimer)
+        })
+    }
+    res.send("I'm working STephen. Check the console... nothing to see here.");
+});
+
+
+// ==================ROUTE DONE==================
+
+function runItemSearch(cat, tempBrowseNode){
+    console.log(`running another search for ${cat}/${tempBrowseNode}...`);
     var promiseArray = [];
     for (let i = 1; i <= 10; i++){
         var aPromise = new Promise((resolve, reject)=>{
             client.itemSearch({
-                searchIndex: 'Electronics',
+                searchIndex: cat,
                 itemPage: i,
                 Availability: 'Available',
                 Condition: 'All',
                 // Sort: 'price',
-                BrowseNode: '172546',
+                BrowseNode: tempBrowseNode,
                 responseGroup: 'ItemAttributes'
             }).then(function(results){
                 var priceArray = [];
-                console.log("%%%%%%%%%%%%%%%%")
+                // console.log("%%%%%%%%%%%%%%%%")
                 // console.log(item.ItemAttributes[0])
-                // if(index==1){console.log(item)}
+                // if(i>5){console.log(results.Items.Item[0])}
+                // console.log(results)
                 if(results.Items.Item[0] != undefined){
                     for (let i = 0; i < 10; i++){
-                        priceArray.push({
-                            BrowseNode: results.Items.Request.ItemSearchRequest.BrowseNode,
-                            ASIN: results.Items.Item[i].ASIN,
-                            Title: results.Items.Item[i].ItemAttributes.Title,
-                            Price: parseInt(results.Items.Item[i].ItemAttributes.ListPrice.Amount)
-                            
-                        })
+                        // console.log(results.Items.Item[i].ItemAttributes.ListPrice)
+                        if(results.Items.Item[i].ItemAttributes.ListPrice != undefined){
+                            priceArray.push({
+                                BrowseNode: results.Items.Request.ItemSearchRequest.BrowseNode,
+                                ASIN: results.Items.Item[i].ASIN,
+                                Title: results.Items.Item[i].ItemAttributes.Title,
+                                Price: parseInt(results.Items.Item[i].ItemAttributes.ListPrice.Amount)
+                                
+                            })
+                        }
                     }                   
+                }else{
+                    console.log(".....Item is undefined.....")
                 }
                 resolve(priceArray)
             }).catch(function(err){
@@ -84,54 +113,27 @@ router.get('/', function(req, res, next) {
         promiseArray.push(aPromise)
     }
 
-	Promise.all(promiseArray).then((data)=>{
-		res.json(data)
-        // console.log(data[0].length)
+    Promise.all(promiseArray).then((data)=>{
+        // res.json(data)
+        const insertProduct = `INSERT INTO ${cat} (BrowseNode, ASIN, Title, Price) VALUES (?, ?, ?, ?)`
+        for (let x = 0; x < 10; x++){
+            if(data[x].length > 0){
+                for (let y = 0; y < data[x].length; y++){
+                    // console.log(x,'---',y)
+                    // console.log(data[x])
+                    connection.query(insertProduct, [data[x][y].BrowseNode, data[x][y].ASIN, data[x][y].Title, data[x][y].Price], (error,results)=>{
+                        // console.log("=======")
+                        // console.log(results)
+                        if(error){
+                            console.log(error)
+                        }
+                    })
+                }
+            }
+        } 
+    });      
+}
 
-    //     var randNumb = Math.floor(Math.random()*10);
-    //     var randNumb2 = Math.floor(Math.random()*10);
-    //     // console.log(randNumb)
-    //     // console.log(randNumb2)
-    //     var productArray = [];
-    //     productArray.push({
-    //         ASIN: data[randNumb][randNumb2].ASIN,
-    //         Price: data[randNumb][randNumb2].Price
-    //     })
-    //     console.log(productArray[0])
-    //     // var minPrice = 
-    //     // var maxPrice = 
-    //     if (productArray[0].Price > 1990 && productArray[0].Price < 6000){
-    //         client.cartCreate({
-    //           items:[{
-    //             ASIN: productArray[0].ASIN,
-    //             Quantity: 1,
-    //           }]
-    //         }).then(function(results){
-    //           res.json(results);
-    //         }).catch(function(err){
-    //           res.json(err);
-    //         });
-    //     }else{
-    //         console.log("Price out of range!")
-    //     }
-
-            
-    //     console.log(data[0][1].Title)
-    //     for (let i = 0; i < data.length; i++){
-    //         var newData = data[i].sort(function(a,b){
-    //             return parseFloat(a.Price) - parseFloat(b.Price);
-    //         })
-    //         res.json(newData)
-    //     }
-        
-        
-    });
-        
-
-		
-	    
-  
-});
 
 //Register
 router.post('/register',(req,res)=>{
