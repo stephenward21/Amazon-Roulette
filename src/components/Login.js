@@ -54,7 +54,7 @@ class LogIn extends Component{
 render() {
     return(
       <Form horizontal onSubmit={this.handleLogin}>
-        <FormGroup controlId="formHorizontalName" >
+        <FormGroup >
             <Col className="email-title" componentClass={ControlLabel} sm={4}>
                 Email
             </Col>
@@ -62,7 +62,7 @@ render() {
                 <FormControl id="email" type="email" name="email" placeholder="Email" />
             </Col>
         </FormGroup>
-        <FormGroup controlId="formHorizontalName">
+        <FormGroup>
             <Col componentClass={ControlLabel} sm={4}>
                 Password
             </Col>

@@ -133,6 +133,7 @@ router.get('/', function(req, res, next) {
   
 });
 
+//Register
 router.post('/register',(req,res)=>{
     console.log(req.body);
     const name = req.body.name;
@@ -182,6 +183,7 @@ router.post('/register',(req,res)=>{
     )
 });
 
+//Login
 router.post('/', (req,res)=>{
     var email = req.body.email;
     var password = req.body.password;
@@ -206,7 +208,7 @@ router.post('/', (req,res)=>{
                     })
                 })
             }else{
-                res.joson({
+                res.json({
                     msg: 'wrongPassword'
                 })
             }
@@ -214,6 +216,54 @@ router.post('/', (req,res)=>{
     })
 });
 
+//Group Register
+router.post('/groups',(req,res)=> {
+    // console.log(req.body);
+    const groupName = req.body.groupName;
+    console.log(groupName);
+    const groupPassword = bcrypt.hashSync(req.body.groupPassword);
+
+    const checkName = new Promise((resolve, reject) => {
+        const checkNameQuery = 'SELECT * FROM groups WHERE groupName = ?';
+        connection.query(checkNameQuery, [groupName], (error, results) => {
+            if (error) {
+                reject(error)
+            }else if (results.length > 0) {
+                reject({msg: "nameTaken"});
+            } else {
+                resolve();
+            }
+        })
+    });
+    checkName.then(
+        () => {
+            var insertQuery = 'INSERT INTO groups (groupName, groupPassword) VALUES (?,?)';
+            connection.query(insertQuery, [groupName, groupPassword], (error, results) => {
+                console.log(results);
+                    // const newID = results.insertId;
+                    // var insertGroupQuery = 'INSERT INTO groups (groupID) VALUES (?)';
+                    // connection.query(insertGroupQuery, [newID], (error2, results2) => {
+
+                        if (error) {
+                            res.json({
+                                msg: error
+                            })
+                        } else {
+                            res.json({
+                                msg: 'groupCreated',
+                                groupName: groupName
+                            })
+                        }
+
+                }
+            ).catch(
+                (error) => {
+                    res.json(error)
+                }
+            )
+        }
+    )
+});
 module.exports = router;
 
 
