@@ -210,10 +210,10 @@ router.post('/', (req,res)=>{
         }else{
             var checkHash = bcrypt.compareSync(password, results[0].password);
             if(checkHash){
-                const updateToken = 'UPDATE user SET token=?, WHERE email=?'
+                const updateToken = 'UPDATE user SET token=? WHERE email=?'
                 var token = randToken.uid(40);
                 connection.query(updateToken,[token,email],(error2,results2)=>{
-                    console.log(results);
+                    console.log(results2, token);
                     res.json({
                         msg: 'loginSuccess',
                         name: results[0].customerName,
@@ -231,28 +231,30 @@ router.post('/', (req,res)=>{
 
 //Group Register
 router.post('/groups',(req,res)=> {
-    // console.log(req.body);
+    console.log(req.body);
+    const token = req.body.token;
+    console.log(req.body.token)
     const groupName = req.body.groupName;
     console.log(groupName);
     const groupPassword = bcrypt.hashSync(req.body.groupPassword);
 
-    const checkName = new Promise((resolve, reject) => {
-        const checkNameQuery = 'SELECT * FROM groups WHERE groupName = ?';
-        connection.query(checkNameQuery, [groupName], (error, results) => {
-            if (error) {
-                reject(error)
-            }else if (results.length > 0) {
-                reject({msg: "nameTaken"});
-            } else {
-                resolve();
-            }
-        })
-    });
-    checkName.then(
-        () => {
-            var insertQuery = 'INSERT INTO groups (groupName, groupPassword) VALUES (?,?)';
-            connection.query(insertQuery, [groupName, groupPassword], (error, results) => {
-                console.log(results);
+    // const checkName = new Promise((resolve, reject) => {
+    //     const checkNameQuery = 'SELECT * FROM user WHERE groupName = ?';
+    //     connection.query(checkNameQuery, [groupName], (error, results) => {
+    //         console.log(results)
+    //         if (error != null) {
+    //             reject(error)
+    //         }else if (results.length == 0) {
+    //             reject({msg: "noSuchGroup"});
+    //         } else {
+    //             resolve(results);
+    //         }
+    //     })
+    // });
+    // checkName.then(
+            var insertQuery = 'UPDATE user SET groupName = ?, groupPassword = ? WHERE token = ?';
+            connection.query(insertQuery, [groupName, groupPassword, token], (error, results) => {
+                // console.log(results);
                     // const newID = results.insertId;
                     // var insertGroupQuery = 'INSERT INTO groups (groupID) VALUES (?)';
                     // connection.query(insertGroupQuery, [newID], (error2, results2) => {
@@ -263,19 +265,14 @@ router.post('/groups',(req,res)=> {
                             })
                         } else {
                             res.json({
-                                msg: 'groupCreated',
+                                msg: 'groupJoined',
                                 groupName: groupName
                             })
                         }
 
                 }
-            ).catch(
-                (error) => {
-                    res.json(error)
-                }
             )
-        }
-    )
+
 });
 module.exports = router;
 

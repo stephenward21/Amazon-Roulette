@@ -36,16 +36,18 @@ class Groups extends Component{
             })
         }else{
 		    console.log(this.props.groupAction);
+		    console.log(this.props.registerResponse);
 		    this.props.groupAction({
 		        groupName: groupName,
-                groupPassword: groupPassword
+                groupPassword: groupPassword,
+                token: this.props.registerResponse.token
             });
         }
     }
 
     componentWillReceiveProps(nextProps){
         console.log(nextProps.registerResponse)
-        if(nextProps.registerResponse.msg === "groupInserted"){
+        if(nextProps.registerResponse.groupInfo.msg === "groupJoined"){
             this.props.history.push('/');
         }else if(nextProps.registerResponse.msg === "groupNameIsTaken"){
             this.setState({
@@ -65,6 +67,7 @@ class Groups extends Component{
                     <p>Invite friends, family, co-workers</p>
                     <p>Leave the gifts to the Wheel!</p>
                     <p><Button bsStyle="primary">GET STARTED</Button></p>
+                    <a className="group-login">Already in a Group?</a>
                 </Jumbotron>
                 <div className='group-register-wrapper'>
                     <h1 className="text-danger"></h1>

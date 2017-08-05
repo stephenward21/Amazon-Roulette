@@ -7,7 +7,7 @@ export default function(groupsData){
         data: groupsData
     });
     return{
-        type: "REGISTER",
+        type: "GROUP_REG",
         payload: thePromise
     }
 }
