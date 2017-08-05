@@ -38,7 +38,33 @@ connection.connect();
 // ######################################################
 // ######################################################
 
-// router.get('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
+    // if (userInput == eventKey1 && category == null){
+        var categories = ["Books", "Music", "Tools", "Toys", "Baby", "Electronics", "VideoGames", "Beauty"]
+        var pickedCat = categories[Math.floor(Math.random()*8)]
+        //or whatever the Category dropdown value ==
+        // console.log(pickedCat)
+        const money =  `SELECT * FROM ${pickedCat} WHERE Price BETWEEN 0000 AND 1500 `;
+        connection.query(money, (error,results)=>{
+            // res.json(results)
+            // console.log(results.length)
+            var randomRes = results[Math.floor(Math.random()*results.length)];
+            // console.log(randomAsin.ASIN)
+            var randomAsin = randomRes.ASIN
+            client.cartCreate({
+              items:[{
+                ASIN: randomAsin,
+                Quantity: 1,
+              }]
+            }).then(function(results){
+              res.json(results);
+            }).catch(function(err){
+              res.json(err);
+            });
+
+
+        })
+    // }
 //
 //     var categories = {
 //         Books:['51546011', '16266351', '16266361', '16266381', '16266391', '16266401', '16266411', '16266421', '16266431', '16266441', '16266461', '16266471', '16266481', '16266491', '16266501', '16266511', '16266521', '16266531', '16266551', '16266541', '16266561'],
@@ -136,8 +162,8 @@ connection.connect();
 //                 }
 //             }
 //         }
-//     });
-// }
+    
+});
 
 // ######################################################
 // ######################################################
