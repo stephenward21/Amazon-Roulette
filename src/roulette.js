@@ -1,6 +1,6 @@
 
 export default function() {
-
+	var text;
 
 	var options = ["Electronics",  "Books", "Tools & Hardware", "Beauty", "Video Games", "Music", "Kids Toys", "Baby" ]
 	var startAngle = 0;
@@ -121,9 +121,17 @@ export default function() {
 	  ctx.font = 'bold 30px Helvetica, Arial';
 	  var text = options[index]
 	  console.log(text)
+	  // document.write(`<h1>${text}</h1>`)
+	 //  function findText(text) {
+		//   window.find(text);
+		//   console.log("String \x22" + text + "\x22 found? " + window.find(text));
+		// }
+	 //  findText(text)
+
 	  ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
 	  ctx.restore();
 	  console.log(startAngle) 
+	  console.log(window)
 	}
 
 	function easeOut(t, b, c, d) {
@@ -133,4 +141,5 @@ export default function() {
 	}
 
 	drawRouletteWheel();
+
 }

@@ -39,6 +39,10 @@
   margin: 10px;
 }
 
+.the-category {
+  display: none; 
+}
+
 
 .empty-form {
   width: 600px;
