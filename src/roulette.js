@@ -1,6 +1,5 @@
 
 export default function() {
-	var text;
 
 	var options = ["Electronics",  "Books", "Tools & Hardware", "Beauty", "Video Games", "Music", "Kids Toys", "Baby" ]
 	var startAngle = 0;
@@ -13,7 +12,7 @@ export default function() {
 
 	var ctx;
 
-	document.getElementById("spin").addEventListener("click", spin);
+	// document.getElementById("spin").addEventListener("click", spin);
 
 	function byte2Hex(n) {
 	  var nybHexString = "0123456789ABCDEF";
@@ -92,53 +91,7 @@ export default function() {
 	  }
 	}
 
-	function spin() {
-	  var spinAngleStart = Math.random() * 2 + 10;
-	  spinTime = 0;
-	  spinTimeTotal = Math.random() *  + 20 * 1000;
-	  rotateWheel();
-	}
-
-	function rotateWheel() {
-	  spinTime += 30;
-	  if(spinTime >= spinTimeTotal) {
-	    stopRotateWheel();
-	    return;
-	  }
-	  var spinAngleStart = Math.random() * 10 + 10;
-	  var spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
-	  startAngle += (spinAngle * Math.PI / 180);
-	  drawRouletteWheel();
-	  spinTimeout = setTimeout(rotateWheel, 30);
-	}
-
-	function stopRotateWheel() {
-	  clearTimeout(spinTimeout);
-	  var degrees = startAngle * 180 / Math.PI + 90;
-	  var arcd = arc * 180 / Math.PI;
-	  var index = Math.floor((360 - degrees % 360) / arcd);
-	  ctx.save();
-	  ctx.font = 'bold 30px Helvetica, Arial';
-	  var text = options[index]
-	  console.log(text)
-	  // document.write(`<h1>${text}</h1>`)
-	 //  function findText(text) {
-		//   window.find(text);
-		//   console.log("String \x22" + text + "\x22 found? " + window.find(text));
-		// }
-	 //  findText(text)
-
-	  ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
-	  ctx.restore();
-	  console.log(startAngle) 
-	  console.log(window)
-	}
-
-	function easeOut(t, b, c, d) {
-	  var ts = (t/=d)*t;
-	  var tc = ts*t;
-	  return b+c*(tc + -3*ts + 3*t);
-	}
+	
 
 	drawRouletteWheel();
 

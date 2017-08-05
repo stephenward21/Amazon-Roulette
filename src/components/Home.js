@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import { DropdownButton, MenuItem, Jumbotron } from 'react-bootstrap';
-// import drawRoulette from '../roulette';
+import drawRoulette from '../roulette';
 import textWheel from '../roulette';
 
 
@@ -18,7 +18,8 @@ class Home extends Component{
 
 	}
 	componentDidMount(props) {
-		this.drawRoulette()
+		drawRoulette()
+		this.drawRoulette();
 
 	}
 
