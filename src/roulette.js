@@ -77,7 +77,7 @@ export default function() {
 	    } 
 
 	    //Arrow
-	    ctx.fillStyle = "black";
+	    ctx.fillStyle = "white";
 	    ctx.beginPath();
 	    ctx.moveTo(250 - 4, 250 - (outsideRadius + 5));
 	    ctx.lineTo(250 + 4, 250 - (outsideRadius + 5));

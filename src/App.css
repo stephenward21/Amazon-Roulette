@@ -25,23 +25,29 @@
   margin-top: 40px;
 }
 
-.canvas {
+
+.canvas{
   display: block;
-  
+  background-color: #006400;
+  border-radius: 50px;
+  margin: auto;
+  margin-bottom: 50px;
 }
+
+
 
 .buttons {
   float: left;
-  margin-left: 80px;
+  margin-left: 250px;
 }
 
 .butt {
   margin: 10px;
 }
 
-/*.the-category {
+.the-category {
   display: none; 
-}*/
+}
 
 
 .empty-form {

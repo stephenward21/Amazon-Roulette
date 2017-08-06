@@ -12,15 +12,27 @@ class Home extends Component{
 		this.state = {
 			options: ""
 		}
-		this.drawRoulette = this.drawRoulette.bind(this);
-		console.log(this.drawRoulette)
+		this.drawRoulette = this.drawRoulette.bind(this); 
+		this.getCategory = this.getCategory.bind(this);
 		
 
 	}
 	componentDidMount(props) {
 		drawRoulette()
 		this.drawRoulette();
+		this.getCategory();
 
+	}
+
+	getCategory(){
+		var cat = this.state.options
+		console.log(cat)
+		const url = window.hostAddress + `/`
+		$.getJSON(url, (data)=>{
+			console.log(data);
+
+		});
+	
 	}
 
 	drawRoulette(){
@@ -36,6 +48,10 @@ class Home extends Component{
 		var ctx;
 
 		document.getElementById("spin").addEventListener("click", spin);
+		$('#spin').click(function(){
+			$('#canvas').css({'width': '750px' , 'height': '750px'})
+			$('#jumbo').css({'display': 'none'})
+		})
 
 		function byte2Hex(n) {
 		  var nybHexString = "0123456789ABCDEF";
@@ -69,7 +85,7 @@ class Home extends Component{
 		    ctx = canvas.getContext("2d");
 		    ctx.clearRect(0,0,500,500);
 
-		    ctx.strokeStyle = "black";
+		    ctx.strokeStyle = "brown";
 		    ctx.lineWidth = 2;
 
 		    ctx.font = 'bold 12px Helvetica, Arial';
@@ -141,12 +157,11 @@ class Home extends Component{
 		  var index = Math.floor((360 - degrees % 360) / arcd);
 		  ctx.save();
 		  ctx.font = 'bold 30px Helvetica, Arial';
+		  ctx.fillStyle = 'white';
 		  var text = options[index]
 		  this.setState({
 		  	options: text
 		  })
-
-		  console.log(text)
 
 		  ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
 		  ctx.restore();
@@ -169,17 +184,14 @@ class Home extends Component{
 
 	render(){
 
-		
-
 
 		
 		return(
 			<div>
-				<Jumbotron>
+				<Jumbotron id="jumbo">
 					<h1 className="home-page-title">AMAZON ROULETTE</h1>
 					<p>The second most fun you&#39;ll have playing Roulette</p>
-				</Jumbotron>
-				<div className="buttons">
+					<div className="buttons">
 				    <DropdownButton bsStyle="primary" className="butt" title='Category'id={`dropdown-basic`}>
 				     <MenuItem eventKey="1">Electronics</MenuItem>
 				     <MenuItem eventKey="2">Tools & Hardware</MenuItem>
@@ -200,10 +212,12 @@ class Home extends Component{
 				     <MenuItem eventKey="7">$150 - $175</MenuItem>
 				     <MenuItem eventKey="8">$175 - $200</MenuItem>
 				   	</DropdownButton>
+				   	<input className="btn btn-primary" type="button" value="spin" id='spin' onClick={this.drawRoulette.spin} />
 				</div>
+				</Jumbotron>
+
 				<canvas className="canvas" width="500px" height="500px" id="canvas"/>
 				<h1 className="the-category">{this.state.options}</h1>
-				<input className="btn btn-primary" type="button" value="spin" id='spin' onClick={this.drawRoulette.spin} />
 			</div>
 		)
 	}
