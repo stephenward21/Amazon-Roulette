@@ -178,9 +178,10 @@ class Home extends Component{
 		  // console.log(window)
 		  console.log(window.document.all.canvas.nextElementSibling.innerHTML);
 		  console.log(this.state.options);
+		  console.log(this.state.price);
 		  // console.log(this.props.categoryAction(this.state.options));
 		  // this.state.options
-			 $.getJSON(`http://localhost:3000/categoryFinder?category=${this.state.options}`,(serverData)=>{
+			 $.getJSON(`http://localhost:3000/categoryFinder?category=${this.state.options}&price=${this.state.price}`,(serverData)=>{
 			 	console.log(serverData)
 
 			 });
@@ -243,7 +244,7 @@ class Home extends Component{
 				     <MenuItem eventKey="Music">Music</MenuItem>
 				     <MenuItem eventKey="Kids" >Kids Toys</MenuItem>
 				   	</DropdownButton>
-				   	<DropdownButton bsStyle="primary" className="butt" title={this.state.price}id={`dropdown-basic`} onSelect={this.handlePrice}>
+				   	<DropdownButton bsStyle="primary" className="butt" title={this.state.price} id={`dropdown-basic`} onSelect={this.handlePrice}>
 				     <MenuItem eventKey="500 AND 1500">$5 - $15</MenuItem>
 				     <MenuItem eventKey="1501 AND 3000">$15 - $30</MenuItem>
 				     <MenuItem eventKey="3001 AND 5000">$30 - $50</MenuItem>
@@ -268,7 +269,8 @@ class Home extends Component{
 
 function mapStateToProps(state){
 	return{
-		categoryResponse: state.categoryReducer
+		categoryResponse: state.categoryReducer,
+		priceResponse: state.categoryReducer
 	}
 }
 

@@ -67,7 +67,9 @@ router.get('/', function(req, res, next) {
 //Item Finder
 router.get('/categoryFinder',function(req,res,next){
     var category = req.query.category;
-    const money =  `SELECT * FROM ${category} WHERE Price BETWEEN 0000 AND 1500 `;
+    var price = req.query.price;
+    console.log(price)
+    const money =  `SELECT * FROM ${category} WHERE Price BETWEEN ${price}`;
         connection.query(money, (error,results)=>{
             // console.log(results)
             var randomRes = results[Math.floor(Math.random()*results.length)];
@@ -224,10 +226,10 @@ router.post('/register',(req,res)=>{
         ()=>{
             var insertIntoCust = "INSERT INTO customers (name, address, city, state) VALUES (?,?,?,?)";
             connection.query(insertIntoCust,[name,address,city,state], (error,results)=>{
-                const newID = results.insertId;
                 var token = randToken.uid(40);
-                var insertQuery = 'INSERT INTO user (uid, email, password, token) VALUES (?,?,?,?)';
-                connection.query(insertQuery, [newID, email, password, token], (error2, results2)=>{
+                var insertQuery = 'INSERT INTO user (email, password, token) VALUES (?,?,?)';
+                connection.query(insertQuery, [email, password, token], (error2, results2)=>{
+                     console.log(results2)
                     if(error2){
                         res.json({
                             msg: error2
