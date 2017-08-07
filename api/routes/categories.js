@@ -32,16 +32,7 @@ var randElectronics = categories.Electronics[Math.floor(Math.random()*categories
 var randVideoGames = categories.VideoGames[Math.floor(Math.random()*categories.VideoGames.length)];
 var randBeauty = categories.Beauty[Math.floor(Math.random()*categories.Beauty.length)];
 
-// console.log(randBook)
-// console.log(randMovie)
-// console.log(randMusic)
-// console.log(randTools)
-// console.log(randToys)
-// console.log(randKitchen)
-// console.log(randBaby)
-// console.log(randElectronics)
-// console.log(randVideoGames)
-// console.log(randBeauty)
+
 
 var category = categories.Books //this variable will be equal to the category that the wheel lands on
 function getRand(){

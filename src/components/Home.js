@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import { DropdownButton, MenuItem, Jumbotron } from 'react-bootstrap';
 import drawRoulette from '../roulette';
+import {bindActionCreators} from 'redux';
+import CategoryAction from '../actions/CategoryAction'
 import textWheel from '../roulette';
+import {connect} from 'react-redux';
 
 
 
@@ -160,6 +163,7 @@ class Home extends Component{
 		  var degrees = startAngle * 180 / Math.PI + 90;
 		  var arcd = arc * 180 / Math.PI;
 		  var index = Math.floor((360 - degrees % 360) / arcd);
+		  var cate
 		  ctx.save();
 		  ctx.font = 'bold 30px Helvetica, Arial';
 		  ctx.fillStyle = 'white';
@@ -172,7 +176,14 @@ class Home extends Component{
 		  ctx.restore();
 		  console.log(startAngle) 
 		  // console.log(window)
-		  console.log(window.document.all.canvas.nextElementSibling.innerHTML)
+		  console.log(window.document.all.canvas.nextElementSibling.innerHTML);
+		  console.log(this.state.options);
+		  // console.log(this.props.categoryAction(this.state.options));
+		  // this.state.options
+			 $.getJSON(`http://localhost:3000/categoryFinder?category=${this.state.options}`,(serverData)=>{
+			 	console.log(serverData)
+
+			 });
 		};
 
 		function easeOut(t, b, c, d) {
@@ -198,8 +209,19 @@ class Home extends Component{
 		})
 	}
 
+	componentWillReceiveProps(nextProps){
+		console.log(nextProps.categoryResponse)
 
-			
+		if(nextProps.categoryResponse.msg === 'categoryFound'){
+			this.props.history.push('/');
+		}else if(nextProps.categoryResponse.msg === 'categoryFailed'){
+			console.log('messed that up');
+			this.setState({
+				categoryMessage: ""
+			})
+		}
+	}
+
 
 	render(){
 
@@ -244,6 +266,16 @@ class Home extends Component{
 }
 
 
+function mapStateToProps(state){
+	return{
+		categoryResponse: state.categoryReducer
+	}
+}
 
+// function mapDispatchToProps(dispatch){
+// 	return bindActionCreators({
+// 		categoryAction: CategoryAction
+// 	},dispatch)
+// }
 
-export default Home;
+export default connect(mapStateToProps)(Home);

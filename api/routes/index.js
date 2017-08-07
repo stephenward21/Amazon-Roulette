@@ -34,7 +34,7 @@ connection.connect();
 
 // ######################################################
 // ######################################################
-// GET home page. API REQUESTS
+//  API REQUESTS
 // ######################################################
 // ######################################################
 
@@ -64,6 +64,17 @@ router.get('/', function(req, res, next) {
 
 
         })
+
+//Item Finder
+router.get('/categoryFinder',function(req,res){
+    var category = req.query.category;
+    const money =  `SELECT * FROM ${category} WHERE Price BETWEEN 0000 AND 1500 `;
+        connection.query(money, (error,results)=>{
+            console.log(results)
+        });
+})
+
+
     // }
 //
 //     var categories = {
@@ -170,6 +181,8 @@ router.get('/', function(req, res, next) {
 // END OF REQUESTS
 // ######################################################
 // ######################################################
+
+
 
 
 //Register
