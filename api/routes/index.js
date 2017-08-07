@@ -39,17 +39,39 @@ connection.connect();
 // ######################################################
 
 router.get('/', function(req, res, next) {
-    // if (userInput == eventKey1 && category == null){
-        var categories = ["Books", "Music", "Tools", "Toys", "Baby", "Electronics", "VideoGames", "Beauty"]
-        var pickedCat = categories[Math.floor(Math.random()*8)]
-        //or whatever the Category dropdown value ==
-        // console.log(pickedCat)
-        const money =  `SELECT * FROM ${pickedCat} WHERE Price BETWEEN 0000 AND 1500 `;
+//     // if (userInput == eventKey1 && category == null){
+//     var categories = ["Books", "Music", "Tools", "Toys", "Baby", "Electronics", "VideoGames", "Beauty"]
+//     var pickedCat = categories[Math.floor(Math.random() * 8)]
+//     //or whatever the Category dropdown value ==
+//     // console.log(pickedCat)
+//     const money = `SELECT * FROM ${pickedCat} WHERE Price BETWEEN 0000 AND 1500 `;
+//     connection.query(money, (error, results) => {
+//         // res.json(results)
+//         // console.log(results.length)
+//         var randomRes = results[Math.floor(Math.random() * results.length)];
+//         // console.log(randomAsin.ASIN)
+//         var randomAsin = randomRes.ASIN
+//         client.cartCreate({
+//             items: [{
+//                 ASIN: randomAsin,
+//                 Quantity: 1,
+//             }]
+//         }).then(function (results) {
+//             res.json(results);
+//         }).catch(function (err) {
+//             res.json(err);
+//         });
+//     })
+});
+
+//Item Finder
+router.get('/categoryFinder',function(req,res,next){
+    var category = req.query.category;
+    const money =  `SELECT * FROM ${category} WHERE Price BETWEEN 0000 AND 1500 `;
         connection.query(money, (error,results)=>{
-            // res.json(results)
-            // console.log(results.length)
+            // console.log(results)
             var randomRes = results[Math.floor(Math.random()*results.length)];
-            // console.log(randomAsin.ASIN)
+            console.log(randomRes)
             var randomAsin = randomRes.ASIN
             client.cartCreate({
               items:[{
@@ -57,22 +79,15 @@ router.get('/', function(req, res, next) {
                 Quantity: 1,
               }]
             }).then(function(results){
+                console.log('========================');
+                console.log(results);
+                console.log('========================');
               res.json(results);
             }).catch(function(err){
               res.json(err);
             });
-
-
-        })
-
-//Item Finder
-router.get('/categoryFinder',function(req,res){
-    var category = req.query.category;
-    const money =  `SELECT * FROM ${category} WHERE Price BETWEEN 0000 AND 1500 `;
-        connection.query(money, (error,results)=>{
-            console.log(results)
         });
-})
+});
 
 
     // }
@@ -174,7 +189,6 @@ router.get('/categoryFinder',function(req,res){
 //             }
 //         }
     
-});
 
 // ######################################################
 // ######################################################
