@@ -10,10 +10,13 @@ class Home extends Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-			options: ""
+			options: "",
+			price: ""
 		}
 		this.drawRoulette = this.drawRoulette.bind(this); 
 		this.getCategory = this.getCategory.bind(this);
+		this.handleSelect = this.handleSelect.bind(this);
+		this.handlePrice = this.handlePrice.bind(this);
 		
 
 	}
@@ -27,6 +30,8 @@ class Home extends Component{
 	getCategory(){
 		var cat = this.state.options
 		console.log(cat)
+		var catter = window.document.all.canvas.nextElementSibling.innerHTML
+		console.log(catter)
 		const url = window.hostAddress + `/`
 		$.getJSON(url, (data)=>{
 			console.log(data);
@@ -166,7 +171,8 @@ class Home extends Component{
 		  ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
 		  ctx.restore();
 		  console.log(startAngle) 
-		  console.log(window)
+		  // console.log(window)
+		  console.log(window.document.all.canvas.nextElementSibling.innerHTML)
 		};
 
 		function easeOut(t, b, c, d) {
@@ -178,9 +184,22 @@ class Home extends Component{
 
 	}
 
-			
-	
+	handleSelect(evt){
+		// console.log(evt)
+		this.setState({
+			options: evt
 
+		});
+	}
+
+	handlePrice(prc){
+		this.setState({
+			price: prc
+		})
+	}
+
+
+			
 
 	render(){
 
@@ -189,28 +208,28 @@ class Home extends Component{
 		return(
 			<div>
 				<Jumbotron id="jumbo">
-					<h1 className="home-page-title">AMAZON ROULETTE</h1>
-					<p className="home-page-text">The second most fun you&#39;ll have playing Roulette</p>
-					<div className="buttons">
-				    <DropdownButton bsStyle="primary" className="butt" title='Category'id={`dropdown-basic`}>
-				     <MenuItem eventKey="1">Electronics</MenuItem>
-				     <MenuItem eventKey="2">Tools & Hardware</MenuItem>
-				     <MenuItem eventKey="3">Books</MenuItem>
-				     <MenuItem eventKey="4">Beauty</MenuItem>
-				     <MenuItem eventKey="5">Baby</MenuItem>
-				     <MenuItem eventKey="6">Video Games</MenuItem>
-				     <MenuItem eventKey="7">Music</MenuItem>
-				     <MenuItem eventKey="8">Kids Toys</MenuItem>
+				<h1 className="home-page-title">AMAZON ROULETTE</h1>
+				<p>The second most fun you&#39;ll have playing Roulette</p>
+				<div className="buttons">
+				    <DropdownButton bsStyle="primary" className="butt" title={this.state.options}id={`dropdown-basic`} onSelect={this.handleSelect}>
+				     <MenuItem eventKey="Electronics" >Electronics</MenuItem>
+				     <MenuItem eventKey="Tools" >Tools & Hardware</MenuItem>
+				     <MenuItem eventKey="Books" >Books</MenuItem>
+				     <MenuItem eventKey="Beauty" >Beauty</MenuItem>
+				     <MenuItem eventKey="Baby" >Baby</MenuItem>
+				     <MenuItem eventKey="VideoGames" >Video Games</MenuItem>
+				     <MenuItem eventKey="Music">Music</MenuItem>
+				     <MenuItem eventKey="Kids" >Kids Toys</MenuItem>
 				   	</DropdownButton>
-				   	<DropdownButton bsStyle="primary" className="butt" title='Price Range'id={`dropdown-basic`}>
-				     <MenuItem eventKey="1">$0 - $15</MenuItem>
-				     <MenuItem eventKey="2">$15 - $30</MenuItem>
-				     <MenuItem eventKey="3">$30 - $50</MenuItem>
-				     <MenuItem eventKey="4">$50 - $75</MenuItem>
-				     <MenuItem eventKey="5">$75 - $100</MenuItem>
-				     <MenuItem eventKey="6">$125 - $150</MenuItem>
-				     <MenuItem eventKey="7">$150 - $175</MenuItem>
-				     <MenuItem eventKey="8">$175 - $200</MenuItem>
+				   	<DropdownButton bsStyle="primary" className="butt" title={this.state.price}id={`dropdown-basic`} onSelect={this.handlePrice}>
+				     <MenuItem eventKey="500 AND 1500">$5 - $15</MenuItem>
+				     <MenuItem eventKey="1501 AND 3000">$15 - $30</MenuItem>
+				     <MenuItem eventKey="3001 AND 5000">$30 - $50</MenuItem>
+				     <MenuItem eventKey="5001 AND 7500">$50 - $75</MenuItem>
+				     <MenuItem eventKey="7501 AND 10000">$75 - $100</MenuItem>
+				     <MenuItem eventKey="10001 AND 12500">$100 - $125</MenuItem>
+				     <MenuItem eventKey="12501 AND 15000">$125 - $150</MenuItem>
+				     <MenuItem eventKey="15001 AND 20000">$150 - $200</MenuItem>
 				   	</DropdownButton>
 				   	<input className="btn btn-primary" type="button" value="spin" id='spin' onClick={this.drawRoulette.spin} />
 				</div>
