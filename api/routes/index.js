@@ -174,13 +174,13 @@ router.get('/', function(req, res, next) {
 
 //Register
 router.post('/register',(req,res)=>{
-    console.log(req.body);
     const name = req.body.name;
     const email = req.body.email;
     const address = req.body.address;
     const city = req.body.city;
     const state = req.body.state;
     const password = bcrypt.hashSync(req.body.password);
+
 
     const checkEmail = new Promise((resolve,reject)=>{
         const checkEmailQuery = 'SELECT * FROM user WHERE email = ?';
