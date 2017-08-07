@@ -65,7 +65,7 @@ class NavBar extends Component{
 						</Navbar.Brand>
                         <Navbar.Toggle />
 					</Navbar.Header>
-					<Navbar.Collapse>
+					<Navbar.Collapse className="navBar">
 						<Nav pullRight className="right-nav">
 							<LinkContainer to="/register">
 								<NavItem eventKey={1}>Register</NavItem>

@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .App-header {
@@ -8,6 +8,7 @@
   padding: 20px;
   color: white;
 }
+
 
 .logo-icon{
   height: 85px;
@@ -49,6 +50,12 @@
   display: none; 
 }
 
+.register-wrapper{
+  text-align: center;
+  color: whitesmoke;
+  background-image: url("https://www.casino.org/blog/wp-content/uploads/roulette-wheel.jpg");
+  height: 100vh;
+}
 
 .empty-form {
   width: 600px;
@@ -66,8 +73,13 @@
 }
 
 .home-page-title{
-    font-family: 'Permanent Marker', cursive;
-    color: #FBC02D !important;
+  text-align: center;
+  font-family: 'Permanent Marker', cursive;
+  color: #FBC02D !important;
+}
+
+.home-page-text{
+  text-align: center;
 }
 
 .login-buttons{
@@ -82,3 +94,30 @@
 .group-login{
 
 }
+
+.landing-container {
+  background-image: linear-gradient(rgba(35,35,35,0.5),rgba(35,35,35,0.5)), url("https://www.casino.org/blog/wp-content/uploads/roulette-wheel.jpg");
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.landing-icon{
+  padding-left: 130px;
+}
+
+.landing-icon-text{
+  text-align: left;
+  font-family: 'Sedgwick Ave', cursive;
+  font-size: 89px;
+  font-weight: bolder;
+  color: #efead7;
+  text-shadow: 3px 2px #222222;
+}
+
+.landing-icon-image{
+  float: right;
+  text-align: right;
+}
+
+

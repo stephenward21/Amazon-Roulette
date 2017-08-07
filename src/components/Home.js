@@ -190,7 +190,7 @@ class Home extends Component{
 			<div>
 				<Jumbotron id="jumbo">
 					<h1 className="home-page-title">AMAZON ROULETTE</h1>
-					<p>The second most fun you&#39;ll have playing Roulette</p>
+					<p className="home-page-text">The second most fun you&#39;ll have playing Roulette</p>
 					<div className="buttons">
 				    <DropdownButton bsStyle="primary" className="butt" title='Category'id={`dropdown-basic`}>
 				     <MenuItem eventKey="1">Electronics</MenuItem>
