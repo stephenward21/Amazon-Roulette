@@ -180,7 +180,7 @@ class Home extends Component{
 		  console.log(this.state.price);
 		  if (this.state.options != ''){
 		  	$('#canvas').css({'width': '500px' , 'height': '500px'})
-			$('#jumbo').css({'display': 'unset'})
+			$('#jumbo').css({'display': ''})
 		  }
 		  // console.log(this.props.categoryAction(this.state.options));
 		  // this.state.options
@@ -208,7 +208,12 @@ class Home extends Component{
 	}
 
 	handlePrice(prc){
+		var formattedPrice = prc.split(' AND ');
+		console.log(formattedPrice)
+		formattedPrice[0] = `$` + Math.floor(formattedPrice[0]/100);
+		formattedPrice[1] = `$` + formattedPrice[1]/100;
 		this.setState({
+			formattedPrice: formattedPrice[0] + '' + '-' + '' + formattedPrice[1],
 			price: prc
 		})
 	}
@@ -246,7 +251,7 @@ class Home extends Component{
 				     <MenuItem eventKey="Music">Music</MenuItem>
 				     <MenuItem eventKey="Kids" >Kids Toys</MenuItem>
 				   	</DropdownButton>
-				   	<DropdownButton bsStyle="primary" className="butt" title={this.state.price} id={`dropdown-basic`} onSelect={this.handlePrice}>
+				   	<DropdownButton bsStyle="primary" className="butt" title={this.state.formattedPrice} id={`dropdown-price`} onSelect={this.handlePrice}>
 				     <MenuItem eventKey="500 AND 1500">$5 - $15</MenuItem>
 				     <MenuItem eventKey="1501 AND 3000">$15 - $30</MenuItem>
 				     <MenuItem eventKey="3001 AND 5000">$30 - $50</MenuItem>
