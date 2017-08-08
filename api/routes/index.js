@@ -68,29 +68,116 @@ router.get('/', function(req, res, next) {
 
 //Item Finder
 router.get('/categoryFinder',function(req,res,next){
+    var tools = "Tools & Hardware";
+    var games = "Video Games";
+    var kids = "Kids Toys";
+
+    var newCat = {
+        tools: "Tools",
+        games: "VideoGames",
+        kids: "Toys"
+    }
     var category = req.query.category;
     var price = req.query.price;
-    console.log(price)
-    const money =  `SELECT * FROM ${category} WHERE Price BETWEEN ${price}`;
+    // console.log(price)
+
+    if (category == tools){
+        category = newCat.tools
+        console.log(price)
+        const money =  `SELECT * FROM ${category} WHERE Price BETWEEN ${price}`;
         connection.query(money, (error,results)=>{
-            console.log(results)
+            // console.log(results)
             var randomRes = results[Math.floor(Math.random()*results.length)];
             console.log(randomRes)
             var randomAsin = randomRes.ASIN
-            client.cartCreate({
-              items:[{
-                ASIN: randomAsin,
-                Quantity: 1,
-              }]
-            }).then(function(results){
-                console.log('========================');
-                console.log(results);
-                console.log('========================');
-              res.json(results);
-            }).catch(function(err){
-              res.json(err);
-            });
+            // client.cartCreate({
+            //   items:[{
+            //     ASIN: randomAsin,
+            //     Quantity: 1,
+            //   }]
+            // }).then(function(results){
+            //     console.log('========================');
+            //     console.log(results);
+            //     console.log('========================');
+            //   res.json(results);
+            // }).catch(function(err){
+            //   res.json(err);
+            // });
         });
+    }else if(category == games){
+        category = newCat.games
+        console.log(price)
+        const money =  `SELECT * FROM ${category} WHERE Price BETWEEN ${price}`;
+        connection.query(money, (error,results)=>{
+            // console.log(results)
+            var randomRes = results[Math.floor(Math.random()*results.length)];
+            console.log(randomRes)
+            var randomAsin = randomRes.ASIN
+            // client.cartCreate({
+            //   items:[{
+            //     ASIN: randomAsin,
+            //     Quantity: 1,
+            //   }]
+            // }).then(function(results){
+            //     console.log('========================');
+            //     console.log(results);
+            //     console.log('========================');
+            //   res.json(results);
+            // }).catch(function(err){
+            //   res.json(err);
+            // });
+        });
+    }else if(category == kids){
+        category = newCat.kids
+        console.log(price)
+        const money =  `SELECT * FROM ${category} WHERE Price BETWEEN ${price}`;
+        connection.query(money, (error,results)=>{
+            // console.log(results)
+            var randomRes = results[Math.floor(Math.random()*results.length)];
+            console.log(randomRes)
+            var randomAsin = randomRes.ASIN
+            // client.cartCreate({
+            //   items:[{
+            //     ASIN: randomAsin,
+            //     Quantity: 1,
+            //   }]
+            // }).then(function(results){
+            //     console.log('========================');
+            //     console.log(results);
+            //     console.log('========================');
+            //   res.json(results);
+            // }).catch(function(err){
+            //   res.json(err);
+            // });
+        });
+    }else{
+        category = req.query.category
+        console.log(price)
+        const money =  `SELECT * FROM ${category} WHERE Price BETWEEN ${price}`;
+        connection.query(money, (error,results)=>{
+            // console.log(results)
+            var randomRes = results[Math.floor(Math.random()*results.length)];
+            console.log(randomRes)
+            var randomAsin = randomRes.ASIN
+            // client.cartCreate({
+            //   items:[{
+            //     ASIN: randomAsin,
+            //     Quantity: 1,
+            //   }]
+            // }).then(function(results){
+            //     console.log('========================');
+            //     console.log(results);
+            //     console.log('========================');
+            //   res.json(results);
+            // }).catch(function(err){
+            //   res.json(err);
+            // });
+        });
+    }
+        
+    
+    
+    
 });
 
 

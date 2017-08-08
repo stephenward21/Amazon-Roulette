@@ -178,12 +178,16 @@ class Home extends Component{
 		  console.log(window.document.all.canvas.nextElementSibling.innerHTML);
 		  console.log(this.state.options);
 		  console.log(this.state.price);
+		  if (this.state.options != ''){
+		  	$('#canvas').css({'width': '500px' , 'height': '500px'})
+			$('#jumbo').css({'display': 'unset'})
+		  }
 		  // console.log(this.props.categoryAction(this.state.options));
 		  // this.state.options
-			 $.getJSON(`http://localhost:3000/categoryFinder?category=${this.state.options}&price=${this.state.price}`,(serverData)=>{
-			 	console.log(serverData)
+		  $.getJSON(`http://localhost:3000/categoryFinder?category=${this.state.options}&price=${this.state.price}`,(serverData)=>{
+		 	console.log(serverData)
 
-			 });
+		  });
 		};
 
 		function easeOut(t, b, c, d) {
