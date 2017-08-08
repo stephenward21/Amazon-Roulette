@@ -85,11 +85,15 @@
 }
 
 .email-title{
-  text-align: left !important
+  text-align: left !important;
 }
 
-.group-login{
+.jumbotron-group-text{
+  text-align: center;
+}
 
+.group-register-wrapper{
+  text-align: center;
 }
 
 .landing-container {

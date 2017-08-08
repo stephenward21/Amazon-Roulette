@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import { DropdownButton, MenuItem, Jumbotron } from 'react-bootstrap';
 import drawRoulette from '../roulette';
-import {bindActionCreators} from 'redux';
-import CategoryAction from '../actions/CategoryAction'
 import textWheel from '../roulette';
 import {connect} from 'react-redux';
 
@@ -15,33 +13,34 @@ class Home extends Component{
 		this.state = {
 			options: "",
 			price: ""
-		}
+		};
+
 		this.drawRoulette = this.drawRoulette.bind(this); 
-		this.getCategory = this.getCategory.bind(this);
+		// this.getCategory = this.getCategory.bind(this);
 		this.handleSelect = this.handleSelect.bind(this);
 		this.handlePrice = this.handlePrice.bind(this);
-		
 
 	}
 	componentDidMount(props) {
-		drawRoulette()
+		drawRoulette();
+		console.log(this.drawRoulette);
 		this.drawRoulette();
-		this.getCategory();
+		// this.getCategory();
 
 	}
 
-	getCategory(){
-		var cat = this.state.options
-		console.log(cat)
-		var catter = window.document.all.canvas.nextElementSibling.innerHTML
-		console.log(catter)
-		const url = window.hostAddress + `/`
-		$.getJSON(url, (data)=>{
-			console.log(data);
-
-		});
+	// getCategory(){
+	// 	var cat = this.state.options;
+	// 	console.log(cat);
+	// 	var catter = window.document.all.canvas.nextElementSibling.innerHTML;
+	// 	console.log(catter);
+	// 	const url = window.hostAddress + `/`;
+	// 	$.getJSON(url, (data)=>{
+	// 		console.log(data);
+    //
+	// 	});
 	
-	}
+	// }
 
 	drawRoulette(){
 		var options = ["Electronics",  "Books", "Tools & Hardware", "Beauty", "Video Games", "Music", "Kids Toys", "Baby" ]
@@ -211,8 +210,7 @@ class Home extends Component{
 	}
 
 	componentWillReceiveProps(nextProps){
-		console.log(nextProps.categoryResponse)
-
+		console.log(nextProps.categoryResponse);
 		if(nextProps.categoryResponse.msg === 'categoryFound'){
 			this.props.history.push('/');
 		}else if(nextProps.categoryResponse.msg === 'categoryFailed'){
@@ -229,12 +227,12 @@ class Home extends Component{
 
 		
 		return(
-			<div>
+			<div className="home-wrapper">
 				<Jumbotron id="jumbo">
 				<h1 className="home-page-title">AMAZON ROULETTE</h1>
 				<p className="home-page-text">The second most fun you&#39;ll have playing Roulette</p>
 				<div className="buttons">
-				    <DropdownButton bsStyle="primary" className="butt" title={this.state.options}id={`dropdown-basic`} onSelect={this.handleSelect}>
+				    <DropdownButton bsStyle="primary" className="butt" title={this.state.options} id={`dropdown-basic`} onSelect={this.handleSelect}>
 				     <MenuItem eventKey="Electronics" >Electronics</MenuItem>
 				     <MenuItem eventKey="Tools" >Tools & Hardware</MenuItem>
 				     <MenuItem eventKey="Books" >Books</MenuItem>

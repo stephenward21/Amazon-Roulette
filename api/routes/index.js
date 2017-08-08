@@ -12,6 +12,8 @@ var amazon = require('amazon-affiliate-api');
 
 var randToken = require('rand-token');
 
+var stripe = require('stripe')(config.stripeKey);
+
 
 
 var connection = mysql.createConnection({
@@ -71,7 +73,7 @@ router.get('/categoryFinder',function(req,res,next){
     console.log(price)
     const money =  `SELECT * FROM ${category} WHERE Price BETWEEN ${price}`;
         connection.query(money, (error,results)=>{
-            // console.log(results)
+            console.log(results)
             var randomRes = results[Math.floor(Math.random()*results.length)];
             console.log(randomRes)
             var randomAsin = randomRes.ASIN
@@ -329,6 +331,29 @@ router.post('/groups',(req,res)=> {
             )
 
 });
+
+//Stripe
+// router.post('/stripe',(req,res)=>{
+//     var userToken = req.body.userToken;
+//     var stripeToken = req.body.stripeToken;
+//     var amount = req.body.amount;
+//     stripe.cahrges.create({
+//         amount: parseInt(amount),
+//         currency: 'usd',
+//         source: stripeToken,
+//         description: "Charge for Amazon Roulette"
+//     },(error,charge)=>{
+//         if(error){
+//             res.json({
+//                 msg: error
+//             })
+//         }else{
+//
+//         }
+//     })
+// });
+
+
 module.exports = router;
 
 

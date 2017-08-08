@@ -12,6 +12,7 @@ class Landing extends Component{
     handleLanding(event){
         event.preventDefault();
 
+
     }
 
     render() {

@@ -58,8 +58,8 @@ class Groups extends Component{
 
     render(){
         return(
-            <div id="jumbotron-group">
-                <Jumbotron>
+            <div id="jumbotron-group-container">
+                <Jumbotron className="jumbotron-group-text">
                     <h1>CREATE A GROUP, BRING THE PARTY</h1>
                     <p>From office parties and White Elephant budgets to bachelor/bachelorette gifts
                         and baby showers, AmazonRoulette raises the group to another level!!</p>
@@ -67,14 +67,13 @@ class Groups extends Component{
                     <p>Invite friends, family, co-workers</p>
                     <p>Leave the gifts to the Wheel!</p>
                     <p><Button bsStyle="primary">GET STARTED</Button></p>
-                    <a className="group-login">Already in a Group?</a>
                 </Jumbotron>
                 <div className='group-register-wrapper'>
                     <h1 className="text-danger"></h1>
                     <Form horizontal className="form-whole" onSubmit={this.handleGroup}>
                         <FormGroup controlId="formHorizontalName" validationState={this.state.groupNameError}>
                             <Col componentClass={ControlLabel} sm={2}>
-                                Name Your Group
+                                 Group Name
                             </Col>
                             <Col sm={10}>
                                 <FormControl className="empty-form" type="text" name="groupName" placeholder="Group Name" />
@@ -82,7 +81,7 @@ class Groups extends Component{
                         </FormGroup>
                         <FormGroup controlId="formHorizontalName">
                             <Col componentClass={ControlLabel} sm={2}>
-                                Create a Password
+                                Password
                             </Col>
                             <Col sm={10}>
                                 <FormControl className="empty-form" type="password" name="password" placeholder="Password" />
@@ -90,7 +89,7 @@ class Groups extends Component{
                         </FormGroup>
 
                         <FormGroup>
-                            <Col smOffset={2} sm={10}>
+                            <Col mdOffset={5} md={4}>
                                 <Button bsStyle="primary" bsSize="small" type="submit">
                                     SIGN UP!
                                 </Button>
