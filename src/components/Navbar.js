@@ -45,7 +45,7 @@ class NavBar extends Component{
         	console.log('success');
 			// this.props.getCart(nextProps.registerResponse.token)
 			this.close();
-			this.props.history.push('/');
+			this.props.history.push('/home');
 			console.log('success')
 		}else if(nextProps.registerResponse.msg === 'userAlreadyExists'){
 			console.log("User name taken!")
@@ -61,7 +61,7 @@ class NavBar extends Component{
 				<Navbar inverse collapseOnSelect fixedTop>
 					<Navbar.Header>
 						<Navbar.Brand>
-							<Link to="/" className="brand"><img className="logo-icon" src="/img/roulette-icon.png" /></Link>
+							<Link to="/home" className="brand"><img className="logo-icon" src="/img/roulette-icon.png" /></Link>
 						</Navbar.Brand>
                         <Navbar.Toggle />
 					</Navbar.Header>

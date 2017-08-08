@@ -6,14 +6,26 @@ class Landing extends Component{
         super(props);
         this.state={
             formError: false
-        }
+        };
+        // this.handleLanding = this.handleLanding.bind(this);
     }
 
-    handleLanding(event){
-        event.preventDefault();
+    // handleLanding(event){
+    //     console.log(event);
+    //     event.preventDefault();
+    //     var name = event.target[0].value;
+    //     var error = false;
+    //
+    //     //name
+		// if(name.length < 3){
+		//     console.log(error)
+		// 	error=true;
+		// }else{
+    //         this.props.history.push('/home');
+		// }
+    //
 
-
-    }
+    // }
 
     render() {
         return(
@@ -37,8 +49,8 @@ class Landing extends Component{
                                 </FormGroup>
                                 <FormGroup>
                                     <Col mdOffset={4} md={7} className="landing-body-button-wrapper">
-                                        <Button onClick={this.handleLanding} bsStyle="default" bsSize="small" type="submit" className="landing-body-button">
-                                            LET ME SPIN!
+                                        <Button bsStyle="default" bsSize="small" type="submit" className="landing-body-button">
+                                            <a href="/home">LET ME SPIN!</a>
                                         </Button>
                                     </Col>
                                 </FormGroup>

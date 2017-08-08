@@ -49,16 +49,42 @@
 
 .register-wrapper{
   text-align: center;
-  color: whitesmoke;
+  color: black;
   background-image: url("https://www.casino.org/blog/wp-content/uploads/roulette-wheel.jpg");
   height: 100vh;
+  margin-top: 10px;
+}
+
+.register-form-whole{
+  margin-top: 20px;
+  z-index: -1;
+  background-color: #ffffff;
+  opacity: 0.5;
+  border-radius: 25px;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+.register-registerMessage{
+  color: black;
+}
+
+
+.register-form-name{
+  margin-top: 30px;
 }
 
 .empty-form {
   width: 600px;
+  background-color: whitesmoke !important;
 }
 
-.form-whole {
+.group-register-wrapper{
+  text-align: center;
+}
+
+.group-form-whole{
   display: inline-block;
   margin-left: auto;
   margin-right: auto;

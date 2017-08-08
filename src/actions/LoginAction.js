@@ -3,7 +3,7 @@ import $ from 'jquery';
 export default function(loginData){
     var thePromise = $.ajax({
         method: "POST",
-        url: window.hostAddress + ('/'),
+        url: window.hostAddress + ('/home'),
         data: loginData
     });
     return{

@@ -40,7 +40,7 @@ connection.connect();
 // ######################################################
 // ######################################################
 
-router.get('/', function(req, res, next) {
+router.get('/home', function(req, res, next) {
 //     // if (userInput == eventKey1 && category == null){
 //     var categories = ["Books", "Music", "Tools", "Toys", "Baby", "Electronics", "VideoGames", "Beauty"]
 //     var pickedCat = categories[Math.floor(Math.random() * 8)]
@@ -254,7 +254,7 @@ router.post('/register',(req,res)=>{
 });
 
 //Login
-router.post('/', (req,res)=>{
+router.post('/home', (req,res)=>{
     var email = req.body.email;
     var password = req.body.password;
     var checkLoginQuery = 'SELECT * FROM user WHERE email = ?';

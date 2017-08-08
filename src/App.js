@@ -13,15 +13,12 @@ import { BrowserRouter as Router, Route} from 'react-router-dom'
 class App extends Component {
   render() {
     return (
-      <Router showNavbar={true}>
+      <Router>
         <div className="App">
-            <div>
-                <Route exact path="/landing" component={Landing} />
-            </div>
             <Navbar/>
             <div className="main">
-                {/*<Route exact path="/landing" component={Landing} />*/}
-                <Route exact path="/" component={Home} />
+                <Route exact path="/" component={Landing} />
+                <Route exact path="/home" component={Home} />
                 <Route exact path="/register" component={Register}/>
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/groups" component={Groups}/>
