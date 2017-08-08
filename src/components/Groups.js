@@ -48,7 +48,7 @@ class Groups extends Component{
     componentWillReceiveProps(nextProps){
         console.log(nextProps.registerResponse)
         if(nextProps.registerResponse.groupInfo.msg === "groupJoined"){
-            this.props.history.push('/');
+            this.props.history.push('/home');
         }else if(nextProps.registerResponse.msg === "groupNameIsTaken"){
             this.setState({
                 registerMessage: 'That name is already in use, please try again'
@@ -70,27 +70,27 @@ class Groups extends Component{
                 </Jumbotron>
                 <div className='group-register-wrapper'>
                     <h1 className="text-danger"></h1>
-                    <Form horizontal className="form-whole" onSubmit={this.handleGroup}>
-                        <FormGroup controlId="formHorizontalName" validationState={this.state.groupNameError}>
-                            <Col componentClass={ControlLabel} sm={2}>
+                    <Form horizontal className="group-form-whole" onSubmit={this.handleGroup}>
+                        <FormGroup  controlId="formHorizontalName" validationState={this.state.groupNameError}>
+                            <Col  md={2} componentClass={ControlLabel} >
                                  Group Name
                             </Col>
-                            <Col sm={10}>
+                            <Col  md={6}>
                                 <FormControl className="empty-form" type="text" name="groupName" placeholder="Group Name" />
                             </Col>
                         </FormGroup>
                         <FormGroup controlId="formHorizontalName">
-                            <Col componentClass={ControlLabel} sm={2}>
+                            <Col  md={2} componentClass={ControlLabel}>
                                 Password
                             </Col>
-                            <Col sm={10}>
+                            <Col md={6}>
                                 <FormControl className="empty-form" type="password" name="password" placeholder="Password" />
                             </Col>
                         </FormGroup>
 
                         <FormGroup>
-                            <Col mdOffset={5} md={4}>
-                                <Button bsStyle="primary" bsSize="small" type="submit">
+                            <Col mdOffset={4} md={4}>
+                                <Button className="group-register-button" bsStyle="primary" bsSize="small" type="submit">
                                     SIGN UP!
                                 </Button>
                             </Col>

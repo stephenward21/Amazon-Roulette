@@ -221,7 +221,7 @@ class Home extends Component{
 	componentWillReceiveProps(nextProps){
 		console.log(nextProps.categoryResponse);
 		if(nextProps.categoryResponse.msg === 'categoryFound'){
-			this.props.history.push('/');
+			this.props.history.push('/home');
 		}else if(nextProps.categoryResponse.msg === 'categoryFailed'){
 			console.log('messed that up');
 			this.setState({

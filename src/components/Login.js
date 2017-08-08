@@ -53,7 +53,7 @@ class LogIn extends Component{
 
 render() {
     return(
-      <Form horizontal onSubmit={this.handleLogin}>
+      <Form className="login-form-wrapper" horizontal onSubmit={this.handleLogin}>
         <FormGroup >
             <Col className="email-title" componentClass={ControlLabel} sm={4}>
                 Email
@@ -71,8 +71,8 @@ render() {
             </Col>
             <Col>
                 <ButtonToolbar className="login-buttons">
-                    <Button bsStyle="primary" onClick={this.handleLogin}>Login</Button>
-                    <Button onClick={this.props.closeFunction}>Close</Button>
+                    <Button className="login-button" bsStyle="primary" onClick={this.handleLogin}>Login</Button>
+                    <Button  className="close-button" onClick={this.props.closeFunction}>Close</Button>
                 </ButtonToolbar>
             </Col>
         </FormGroup>

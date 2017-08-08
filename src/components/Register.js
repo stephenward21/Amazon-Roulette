@@ -65,7 +65,7 @@ class Register extends Component {
 	componentWillReceiveProps(nextProps){
 		console.log(nextProps.registerResponse)
 		if(nextProps.registerResponse.msg === 'userInserted'){
-			this.props.history.push('/');
+			this.props.history.push('/home');
 		}else if(nextProps.registerResponse.msg === 'userAlreadyExists'){
 			console.log('used');
 			this.setState({
@@ -78,9 +78,9 @@ class Register extends Component {
 		
 		return(
 			<div className="register-wrapper">
-				<h1 className="text-danger">{this.state.registerMessage}</h1>
-				<Form horizontal className="form-whole" onSubmit={this.handleRegistration}>
-					<FormGroup className="name"controlId="formHorizontalName" validationState={this.state.nameError}>
+				<h1 className="register-registerMessage">{this.state.registerMessage}</h1>
+				<Form horizontal className="register-form-whole" onSubmit={this.handleRegistration}>
+					<FormGroup className="register-form-name"controlId="formHorizontalName" validationState={this.state.nameError}>
 						<Col  componentClass={ControlLabel} sm={2}>
 							Name
 						</Col>
