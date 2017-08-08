@@ -15,13 +15,13 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-            <Navbar/>
+            {/*<Navbar/>*/}
             <div className="main">
                 <Route exact path="/" component={Landing} />
-                <Route exact path="/home" component={Home} />
-                <Route exact path="/register" component={Register}/>
-                <Route exact path="/login" component={Login}/>
-                <Route exact path="/groups" component={Groups}/>
+                <Route exact path="/home" render={() => (<div><Navbar /><Home /></div>)}/>
+                <Route exact path="/register" render={() => (<div><Navbar /><Register /></div>)}/>
+                <Route exact path="/login" render={() => (<div><Navbar /><Login /></div>)}/>
+                <Route exact path="/groups" render={() => (<div><Navbar /><Groups /></div>)}/>
             </div>
         </div>
       </Router>

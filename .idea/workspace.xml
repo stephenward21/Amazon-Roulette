@@ -3,16 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b92f7577-4012-4de8-9f3b-c27567775804" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/routes/index.js" afterPath="$PROJECT_DIR$/api/routes/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.css" afterPath="$PROJECT_DIR$/src/App.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actions/LoginAction.js" afterPath="$PROJECT_DIR$/src/actions/LoginAction.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Groups.js" afterPath="$PROJECT_DIR$/src/components/Groups.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Home.js" afterPath="$PROJECT_DIR$/src/components/Home.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Landing.js" afterPath="$PROJECT_DIR$/src/components/Landing.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Login.js" afterPath="$PROJECT_DIR$/src/components/Login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Navbar.js" afterPath="$PROJECT_DIR$/src/components/Navbar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Register.js" afterPath="$PROJECT_DIR$/src/components/Register.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,8 +21,8 @@
       <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+            <state relative-caret-position="422">
+              <caret line="29" column="1" lean-forward="true" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -39,7 +33,7 @@
       <file leaf-file-name="Register.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Register.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
+            <state relative-caret-position="293">
               <caret line="67" column="12" lean-forward="false" selection-start-line="67" selection-start-column="12" selection-end-line="67" selection-end-column="45" />
               <folding />
             </state>
@@ -49,8 +43,8 @@
       <file leaf-file-name="Landing.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Landing.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="51" column="48" lean-forward="false" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
+            <state relative-caret-position="214">
+              <caret line="51" column="125" lean-forward="true" selection-start-line="51" selection-start-column="125" selection-end-line="51" selection-end-column="125" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -58,20 +52,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="App.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App.css">
+      <file leaf-file-name="Groups.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Groups.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+            <state relative-caret-position="110">
+              <caret line="60" column="21" lean-forward="false" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Navbar.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="App.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/App.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="83" column="2" lean-forward="false" selection-start-line="83" selection-start-column="4" selection-end-line="84" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Navbar.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Navbar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="990">
+            <state relative-caret-position="638">
               <caret line="63" column="43" lean-forward="false" selection-start-line="63" selection-start-column="43" selection-end-line="63" selection-end-column="43" />
               <folding />
             </state>
@@ -83,7 +87,29 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
               <caret line="46" column="20" lean-forward="false" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
-              <folding />
+              <folding>
+                <marker date="1502216135000" expanded="true" signature="2031:5971" ph="{...}" />
+                <marker date="1502216135000" expanded="true" signature="5980:11645" ph="//..." />
+                <marker date="1502216135000" expanded="true" signature="11652:11902" ph="//..." />
+                <marker date="1502216135000" expanded="true" signature="11953:13585" ph="{...}" />
+                <marker date="1502216135000" expanded="true" signature="12237:12577" ph="{...}" />
+                <marker date="1502216135000" expanded="true" signature="12376:12570" ph="{...}" />
+                <marker date="1502216135000" expanded="true" signature="12447:12514" ph="{...}" />
+                <marker date="1502216135000" expanded="true" signature="12518:12560" ph="{...}" />
+                <marker date="1502216135000" expanded="true" signature="12613:13507" ph="{...}" />
+                <marker date="1502216135000" expanded="true" signature="12807:13496" ph="{...}" />
+                <marker date="1502216135000" expanded="true" signature="13042:13480" ph="{...}" />
+                <marker date="1502216135000" expanded="true" signature="13117:13242" ph="{...}" />
+                <marker date="1502216135000" expanded="true" signature="13152:13219" ph="{&quot;msg&quot;: error2...}" />
+                <marker date="1502216135000" expanded="true" signature="13246:13462" ph="{...}" />
+                <marker date="1502216135000" expanded="true" signature="13281:13438" ph="{&quot;name&quot;: name...}" />
+                <marker date="1502216135000" expanded="true" signature="13538:13577" ph="{...}" />
+                <marker date="1502216135000" expanded="true" signature="13629:14692" ph="{...}" />
+                <marker date="1502216135000" expanded="true" signature="13829:14689" ph="{...}" />
+                <marker date="1502216135000" expanded="true" signature="13894:13979" ph="{...}" />
+                <marker date="1502216135000" expanded="true" signature="13917:13967" ph="{&quot;msg&quot;: 'badUserName'...}" />
+                <marker date="1502216135000" expanded="true" signature="14089:14567" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -117,6 +143,9 @@
       <find>user</find>
       <find>push</find>
       <find>'/'</find>
+      <find>115</find>
+      <find>group</find>
+      <find>jumbotron-group-contain</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -145,15 +174,15 @@
         <option value="$PROJECT_DIR$/src/reducers/rootReducer.js" />
         <option value="$PROJECT_DIR$/src/actions/CategoryAction.js" />
         <option value="$PROJECT_DIR$/src/components/Login.js" />
-        <option value="$PROJECT_DIR$/src/App.css" />
-        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/api/routes/index.js" />
         <option value="$PROJECT_DIR$/src/components/Home.js" />
-        <option value="$PROJECT_DIR$/src/components/Groups.js" />
         <option value="$PROJECT_DIR$/src/components/Register.js" />
         <option value="$PROJECT_DIR$/src/actions/LoginAction.js" />
-        <option value="$PROJECT_DIR$/src/components/Landing.js" />
         <option value="$PROJECT_DIR$/src/components/Navbar.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/components/Groups.js" />
+        <option value="$PROJECT_DIR$/src/components/Landing.js" />
+        <option value="$PROJECT_DIR$/src/App.css" />
       </list>
     </option>
   </component>
@@ -836,7 +865,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="46" column="20" lean-forward="false" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
-          <folding />
+          <folding>
+            <marker date="1502216135000" expanded="true" signature="2031:5971" ph="{...}" />
+            <marker date="1502216135000" expanded="true" signature="5980:11645" ph="//..." />
+            <marker date="1502216135000" expanded="true" signature="11652:11902" ph="//..." />
+            <marker date="1502216135000" expanded="true" signature="11953:13585" ph="{...}" />
+            <marker date="1502216135000" expanded="true" signature="12237:12577" ph="{...}" />
+            <marker date="1502216135000" expanded="true" signature="12376:12570" ph="{...}" />
+            <marker date="1502216135000" expanded="true" signature="12447:12514" ph="{...}" />
+            <marker date="1502216135000" expanded="true" signature="12518:12560" ph="{...}" />
+            <marker date="1502216135000" expanded="true" signature="12613:13507" ph="{...}" />
+            <marker date="1502216135000" expanded="true" signature="12807:13496" ph="{...}" />
+            <marker date="1502216135000" expanded="true" signature="13042:13480" ph="{...}" />
+            <marker date="1502216135000" expanded="true" signature="13117:13242" ph="{...}" />
+            <marker date="1502216135000" expanded="true" signature="13152:13219" ph="{&quot;msg&quot;: error2...}" />
+            <marker date="1502216135000" expanded="true" signature="13246:13462" ph="{...}" />
+            <marker date="1502216135000" expanded="true" signature="13281:13438" ph="{&quot;name&quot;: name...}" />
+            <marker date="1502216135000" expanded="true" signature="13538:13577" ph="{...}" />
+            <marker date="1502216135000" expanded="true" signature="13629:14692" ph="{...}" />
+            <marker date="1502216135000" expanded="true" signature="13829:14689" ph="{...}" />
+            <marker date="1502216135000" expanded="true" signature="13894:13979" ph="{...}" />
+            <marker date="1502216135000" expanded="true" signature="13917:13967" ph="{&quot;msg&quot;: 'badUserName'...}" />
+            <marker date="1502216135000" expanded="true" signature="14089:14567" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -846,27 +897,11 @@
           <caret line="214" column="38" lean-forward="true" selection-start-line="214" selection-start-column="38" selection-end-line="214" selection-end-column="38" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-            <marker date="1502214604000" expanded="true" signature="6155:6451" ph="..." />
-            <marker date="1502214604000" expanded="true" signature="6182:6451" ph="..." />
-            <marker date="1502214604000" expanded="true" signature="6298:6303" ph="'" />
-            <marker date="1502214604000" expanded="true" signature="6360:6451" ph="..." />
+            <marker date="1502216135000" expanded="true" signature="6298:6594" ph="..." />
+            <marker date="1502216135000" expanded="true" signature="6325:6594" ph="..." />
+            <marker date="1502216135000" expanded="true" signature="6441:6446" ph="'" />
+            <marker date="1502216135000" expanded="true" signature="6503:6594" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Groups.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="50" column="42" lean-forward="false" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -892,16 +927,6 @@
           <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
           <folding>
             <element signature="e#0#40#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -948,28 +973,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Navbar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638">
+          <caret line="63" column="43" lean-forward="false" selection-start-line="63" selection-start-column="43" selection-end-line="63" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Register.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
+        <state relative-caret-position="293">
           <caret line="67" column="12" lean-forward="false" selection-start-line="67" selection-start-column="12" selection-end-line="67" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="29" column="1" lean-forward="true" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Groups.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="60" column="21" lean-forward="false" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Landing.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="51" column="48" lean-forward="false" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
+        <state relative-caret-position="214">
+          <caret line="51" column="125" lean-forward="true" selection-start-line="51" selection-start-column="125" selection-end-line="51" selection-end-column="125" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Navbar.js">
+    <entry file="file://$PROJECT_DIR$/src/App.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="63" column="43" lean-forward="false" selection-start-line="63" selection-start-column="43" selection-end-line="63" selection-end-column="43" />
+        <state relative-caret-position="183">
+          <caret line="83" column="2" lean-forward="false" selection-start-line="83" selection-start-column="4" selection-end-line="84" selection-end-column="33" />
           <folding />
         </state>
       </provider>

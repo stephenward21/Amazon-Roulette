@@ -47,14 +47,12 @@ class Landing extends Component{
                                         <FormControl className="empty-form" type="text" name="fullName" />
                                     </Col>
                                 </FormGroup>
-                                <FormGroup>
-                                    <Col mdOffset={4} md={7} className="landing-body-button-wrapper">
-                                        <Button bsStyle="default" bsSize="small" type="submit" className="landing-body-button">
-                                            <a href="/home">LET ME SPIN!</a>
-                                        </Button>
-                                    </Col>
-                                </FormGroup>
                             </Form>
+                            <Col mdOffset={4} md={7} className="landing-body-button-container">
+                                <Button bsStyle="default" bsSize="small" type="submit" className="landing-body-button" href="/home">
+                                    LET ME SPIN!
+                                </Button>
+                            </Col>
                         </Col>
                     </row>
                 </Grid>

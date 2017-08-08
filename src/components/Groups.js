@@ -58,7 +58,7 @@ class Groups extends Component{
 
     render(){
         return(
-            <div id="jumbotron-group-container">
+            <div id="group-container">
                 <Jumbotron className="jumbotron-group-text">
                     <h1>CREATE A GROUP, BRING THE PARTY</h1>
                     <p>From office parties and White Elephant budgets to bachelor/bachelorette gifts

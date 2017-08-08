@@ -80,8 +80,18 @@
   background-color: whitesmoke !important;
 }
 
+.group-container{
+  /*background-size: cover;*/
+  /*background-repeat: no-repeat;*/
+  /*background-image: url("https://images.pexels.com/photos/2143/lights-party-dancing-music.jpg?h=350&auto=compress&cs=tinysrgb");*/
+}
+
 .group-register-wrapper{
   text-align: center;
+  /*background-size: cover;*/
+  /*background-repeat: no-repeat;*/
+  /*background-image: url("https://images.pexels.com/photos/2143/lights-party-dancing-music.jpg?h=350&auto=compress&cs=tinysrgb");*/
+  /*background-color: #e7ed4e;*/
 }
 
 .group-form-whole{
@@ -92,7 +102,7 @@
 }
 
 .main{
-  margin-top: 110px;
+  margin-top: 105px;
 }
 
 .home-page-title{
@@ -116,6 +126,7 @@
 
 .jumbotron-group-text{
   text-align: center;
+  margin-bottom: -20px;
 }
 
 .group-register-wrapper{
@@ -181,3 +192,6 @@
 }
 
 
+.landing-container{
+  margin-top: -105px;
+}
