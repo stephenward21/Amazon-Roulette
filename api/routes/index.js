@@ -363,25 +363,26 @@ router.post('/groups',(req,res)=> {
 });
 
 //Stripe
-// router.post('/stripe',(req,res)=>{
-//     var userToken = req.body.userToken;
-//     var stripeToken = req.body.stripeToken;
-//     var amount = req.body.amount;
-//     stripe.cahrges.create({
-//         amount: parseInt(amount),
-//         currency: 'usd',
-//         source: stripeToken,
-//         description: "Charge for Amazon Roulette"
-//     },(error,charge)=>{
-//         if(error){
-//             res.json({
-//                 msg: error
-//             })
-//         }else{
-//
-//         }
-//     })
-// });
+router.post('/stripe',(req,res)=>{
+    
+    var userToken = req.body.token;
+    var stripeToken = req.body.stripeToken;
+    var amount = req.body.amount;
+    stripe.cahrges.create({
+        amount: parseInt(amount),
+        currency: 'usd',
+        source: stripeToken,
+        description: "Charge for Amazon Roulette"
+    },(error,charge)=>{
+        if(error){
+            res.json({
+                msg: error
+            })
+        }else{
+
+        }
+    })
+});
 
 
 module.exports = router;

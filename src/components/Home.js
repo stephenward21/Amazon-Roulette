@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { DropdownButton, MenuItem, Jumbotron } from 'react-bootstrap';
+import { DropdownButton, MenuItem, Jumbotron, ButtonToolbar, Button } from 'react-bootstrap';
 import drawRoulette from '../roulette';
 import textWheel from '../roulette';
 import {connect} from 'react-redux';
@@ -29,18 +29,36 @@ class Home extends Component{
 
 	}
 
-	// getCategory(){
-	// 	var cat = this.state.options;
-	// 	console.log(cat);
-	// 	var catter = window.document.all.canvas.nextElementSibling.innerHTML;
-	// 	console.log(catter);
-	// 	const url = window.hostAddress + `/`;
-	// 	$.getJSON(url, (data)=>{
-	// 		console.log(data);
-    //
-	// 	});
-	
-	// }
+	makePayment() {
+        var handler = window.StripeCheckout.configure({
+            key: 'pk_test_K9L17worNm0z7lHpdssTpwqr',
+            locale: 'auto',
+            image: '/img/roulette-icon.png',
+            token: (token)=> {
+            	console.log(token);
+                var theData = {
+                    amount: '',
+                    stripeToken: token.id,
+                    userToken: this.props.loginInfo.token,
+                }
+                $.ajax({
+                    method: 'POST',
+                    url: window.hostAddress+'/stripe',
+                    data: theData
+                }).done((data) => {
+                    console.log(data);
+                    if (data.msg === 'paymentSuccess') {
+                    	this.props.history.push('/thank-you');
+                    }
+                });
+            }
+        });
+        handler.open({
+            name: "Pay Now",
+            description: 'Pay Now',
+            amount: '',
+        })
+    }
 
 	drawRoulette(){
 		var options = ["Electronics",  "Books", "Tools & Hardware", "Beauty", "Video Games", "Music", "Kids Toys", "Baby" ]
@@ -181,6 +199,10 @@ class Home extends Component{
 		  if (this.state.options != ''){
 		  	$('#canvas').css({'width': '500px' , 'height': '500px'})
 			$('#jumbo').css({'display': ''})
+			$('.checkout').css({'display': 'initial'})
+			$('.spin-again').css({'display': 'initial'})
+			$('.butt').css({'display': 'none'})
+			$('#spin').css({'display': 'none'})
 		  }
 		  // console.log(this.props.categoryAction(this.state.options));
 		  // this.state.options
@@ -213,7 +235,7 @@ class Home extends Component{
 		formattedPrice[0] = `$` + Math.floor(formattedPrice[0]/100);
 		formattedPrice[1] = `$` + formattedPrice[1]/100;
 		this.setState({
-			formattedPrice: formattedPrice[0] + '' + '-' + '' + formattedPrice[1],
+			formattedPrice: formattedPrice[0] + '-' + formattedPrice[1],
 			price: prc
 		})
 	}
@@ -240,17 +262,9 @@ class Home extends Component{
 				<Jumbotron id="jumbo">
 				<h1 className="home-page-title">AMAZON ROULETTE</h1>
 				<p className="home-page-text">The second most fun you&#39;ll have playing Roulette</p>
+				<p className="home-page-text"> Take a close look at the wheel of categories below to get an idea of what type of product could soon be yours!
+					When you are ready, choose a price range from our dropdown and then click spin!  From there you will be prompted to checkout using our secure Stripe payment solution.</p>
 				<div className="buttons">
-				    <DropdownButton bsStyle="primary" className="butt" title={this.state.options} id={`dropdown-basic`} onSelect={this.handleSelect}>
-				     <MenuItem eventKey="Electronics" >Electronics</MenuItem>
-				     <MenuItem eventKey="Tools" >Tools & Hardware</MenuItem>
-				     <MenuItem eventKey="Books" >Books</MenuItem>
-				     <MenuItem eventKey="Beauty" >Beauty</MenuItem>
-				     <MenuItem eventKey="Baby" >Baby</MenuItem>
-				     <MenuItem eventKey="VideoGames" >Video Games</MenuItem>
-				     <MenuItem eventKey="Music">Music</MenuItem>
-				     <MenuItem eventKey="Kids" >Kids Toys</MenuItem>
-				   	</DropdownButton>
 				   	<DropdownButton bsStyle="primary" className="butt" title={this.state.formattedPrice} id={`dropdown-price`} onSelect={this.handlePrice}>
 				     <MenuItem eventKey="500 AND 1500">$5 - $15</MenuItem>
 				     <MenuItem eventKey="1501 AND 3000">$15 - $30</MenuItem>
@@ -262,6 +276,9 @@ class Home extends Component{
 				     <MenuItem eventKey="15001 AND 20000">$150 - $200</MenuItem>
 				   	</DropdownButton>
 				   	<input className="btn btn-primary" type="button" value="spin" id='spin' onClick={this.drawRoulette.spin} />
+				    <Button className="checkout"bsStyle="primary" onClick={this.makePayment}>Check Out!</Button>
+				    <Button className="spin-again"bsStyle="primary" href="/home">Spin Again!</Button>
+				  
 				</div>
 				</Jumbotron>
 
