@@ -12,30 +12,6 @@ export default function() {
 
 	var ctx;
 
-	// document.getElementById("spin").addEventListener("click", spin);
-
-	function byte2Hex(n) {
-	  var nybHexString = "0123456789ABCDEF";
-	  return String(nybHexString.substr((n >> 4) & 0x0F,1)) + nybHexString.substr(n & 0x0F,1);
-	}
-
-	function RGB2Color(r,g,b) {
-		return '#' + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);
-	}
-
-	function getColor(item, maxitem) {
-	  var phase = 0;
-	  var center = 128;
-	  var width = 127;
-	  var frequency = Math.PI*8/maxitem;
-	  
-	  var red   = Math.sin(frequency*item+0+phase) * width + center;
-	  var green = Math.sin(frequency*item+2+phase) * width + center;
-	  var blue  = Math.sin(frequency*item+0+phase) * width + center;
-	  
-	  return RGB2Color(red,green,blue);
-	}
-
 	function drawRouletteWheel() {
 	  var canvas = document.getElementById("canvas");
 	  if (canvas.getContext) {
@@ -54,7 +30,12 @@ export default function() {
 	    for(var i = 0; i < options.length; i++) {
 	      var angle = startAngle + i * arc;
 	      //ctx.fillStyle = colors[i];
-	      ctx.fillStyle = getColor(i, options.length);
+	      // ctx.fillStyle = getColor(i, options.length);
+	      if (i % 2){
+	      	ctx.fillStyle = 'red';
+	      }else{
+	      	ctx.fillStyle = 'black';
+	      }
 
 	      ctx.beginPath();
 	      ctx.arc(250, 250, outsideRadius, angle, angle + arc, false);
@@ -66,8 +47,8 @@ export default function() {
 	      ctx.shadowOffsetX = -1;
 	      ctx.shadowOffsetY = -1;
 	      ctx.shadowBlur    = 0;
-	      ctx.shadowColor   = "rgb(220,220,220)";
-	      ctx.fillStyle = "black";
+	      // ctx.shadowColor   = "rgb(220,220,220)";
+	      ctx.fillStyle = "blue";
 	      ctx.translate(250 + Math.cos(angle + arc / 2) * textRadius, 
 	                    250 + Math.sin(angle + arc / 2) * textRadius);
 	      ctx.rotate(angle + arc / 2 + Math.PI / 2);
@@ -89,10 +70,23 @@ export default function() {
 	    ctx.lineTo(250 - 4, 250 - (outsideRadius + 5));
 	    ctx.fill();
 	  }
+
+	  
+	  
 	}
 
 	
 
 	drawRouletteWheel();
+	var spinAngleStart = Math.random() * 2 + 10;
+	spinTime = 0;
+	spinTimeTotal = Math.random() *  + 20 * 1000;
+	spinTime += 30;
+	var spinAngleStart = Math.random() * 10 + 10;
+	// var spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
+	// startAngle += (spinAngle * Math.PI / 180);
+	// spinTimeout = setTimeout(rotateWheel, 30);
+
+
 
 }
