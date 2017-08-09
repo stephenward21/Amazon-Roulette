@@ -306,27 +306,27 @@ class Home extends Component{
 					<canvas className="canvas" width="500px" height="500px" id="canvas"/>
 					<h1 className="home-the-category">{this.state.options}</h1>
 				</Col>
-				<Grid className="home-body-container" md={12}>
-					<Row className="home-body" >
-						<Col  className="home-body-pic1" md={5}>
-							<img src="/img/tools_img6" />
-						</Col>
-						<Col  className="home-body-pic2" md={2}>
-							<img src="/img/phones_img2.jpeg" />
-						</Col>
-						<Col  className="home-body-pic2" md={2}>
-							<img src="/img/beauty_img5.jpeg" />
-						</Col>
-					</Row>
-					<Row>
-						<Col className="home-body-pic3" md={6}>
-							<img src="/img/books_img3.jpeg" />
-						</Col>
-						<Col className="home-body-pic4" md={2}>
-							<img src="/img/minions_img4.jpeg" />
-						</Col>
-					</Row>
-				</Grid>
+				{/*<Grid className="home-body-container" md={12}>*/}
+					{/*<Row className="bg-imgs">*/}
+						{/*<Col  className="home-body-pic">*/}
+							{/*<img src="/img/tools_img6.jpeg" />*/}
+						{/*</Col>*/}
+						{/*<Col  className="home-body-pic">*/}
+							{/*<img src="/img/beauty_img5.jpeg" />*/}
+						{/*</Col>*/}
+					{/*</Row>*/}
+					{/*<Row className="bg-imgs">*/}
+						{/*<Col className="home-body-pic">*/}
+							{/*<img src="/img/books_img3.jpeg" />*/}
+						{/*</Col>*/}
+						{/*<Col className="home-body-pic">*/}
+							{/*<img src="/img/minions_img4.jpeg" />*/}
+						{/*</Col>*/}
+						{/*<Col className="home-body-pic">*/}
+							{/*<img src="/img/electronics_img7.jpeg" />*/}
+						{/*</Col>*/}
+					{/*</Row>*/}
+				{/*</Grid>*/}
 			</div>
 		)
 	}

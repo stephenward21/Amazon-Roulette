@@ -282,7 +282,7 @@ button:focus{
 
 .canvas {
   text-align: center;
-  display: block;
+  /*display: block;*/
   background-image: linear-gradient(rgba(35, 35, 35, 0.5), rgba(35, 35, 35, 0.5)), url("https://s-media-cache-ak0.pinimg.com/736x/c6/a0/dc/c6a0dc6df81b08f66d218ee4748cbeaf--casino-room-casino-theme.jpg");
   border-radius: 50px;
   box-shadow: 15px 15px;
@@ -291,12 +291,20 @@ button:focus{
 
 .home-body-container{
   z-index: -1;
-  text-align: center;
+  /*text-align: center;*/
 }
 
-.home-body img{
-  z-index: -2;
+.home-body-container img{
+  z-index: -3;
   margin-bottom: 4px;
   margin-right: 5px;
+  width: 800px;
 }
 
+.bg-imgs{
+  display: inline-block;
+}
+
+.home-body-pic{
+  display: inline-block;
+}

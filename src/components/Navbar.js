@@ -99,9 +99,6 @@ class NavBar extends Component{
 									Groups
 								</NavItem>
 							</LinkContainer>
-							<NavItem eventKey={2}>
-								About Us
-							</NavItem>
 						</Nav>
 					</Navbar.Collapse>
 				</Navbar>
