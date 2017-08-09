@@ -77,27 +77,6 @@ class Home extends Component{
 			$('#jumbo').css({'display': 'none'})
 		})
 
-		function byte2Hex(n) {
-		  var nybHexString = "0123456789ABCDEF";
-		  return String(nybHexString.substr((n >> 4) & 0x0F,1)) + nybHexString.substr(n & 0x0F,1);
-		}
-
-		function RGB2Color(r,g,b) {
-			return '#' + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);
-		}
-
-		function getColor(item, maxitem) {
-		  var phase = 0;
-		  var center = 128;
-		  var width = 127;
-		  var frequency = Math.PI*8/maxitem;
-		  
-		  var red   = Math.sin(frequency*item+0+phase) * width + center;
-		  var green = Math.sin(frequency*item+2+phase) * width + center;
-		  var blue  = Math.sin(frequency*item+0+phase) * width + center;
-		  
-		  return RGB2Color(red,green,blue);
-		}
 
 		function drawRouletteWheel() {
 		  var canvas = document.getElementById("canvas");
@@ -117,7 +96,11 @@ class Home extends Component{
 		    for(var i = 0; i < options.length; i++) {
 		      var angle = startAngle + i * arc;
 		      //ctx.fillStyle = colors[i];
-		      ctx.fillStyle = getColor(i, options.length);
+		      if (i % 2){
+		      	ctx.fillStyle = 'red';
+		      }else{
+		      	ctx.fillStyle = 'black';
+		      }
 
 		      ctx.beginPath();
 		      ctx.arc(250, 250, outsideRadius, angle, angle + arc, false);
@@ -129,8 +112,8 @@ class Home extends Component{
 		      ctx.shadowOffsetX = -1;
 		      ctx.shadowOffsetY = -1;
 		      ctx.shadowBlur    = 0;
-		      ctx.shadowColor   = "rgb(220,220,220)";
-		      ctx.fillStyle = "black";
+		      // ctx.shadowColor   = "rgb(220,220,220)";
+		      ctx.fillStyle = "blue";
 		      ctx.translate(250 + Math.cos(angle + arc / 2) * textRadius, 
 		                    250 + Math.sin(angle + arc / 2) * textRadius);
 		      ctx.rotate(angle + arc / 2 + Math.PI / 2);
@@ -140,7 +123,7 @@ class Home extends Component{
 		    } 
 
 		    //Arrow
-		    ctx.fillStyle = "black";
+		    ctx.fillStyle = "white";
 		    ctx.beginPath();
 		    ctx.moveTo(250 - 4, 250 - (outsideRadius + 5));
 		    ctx.lineTo(250 + 4, 250 - (outsideRadius + 5));
