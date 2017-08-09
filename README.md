@@ -67,7 +67,8 @@ Instead of having the user direct to a separate page for the login, we have a bo
 
 We decided to select numerous Amazon BrowseNodes in each applicable product category, and from there wrote a sequel injection script to run through each BrowseNode, select all the products, and insert into the database.
 
-<p align='center'><img src='./public/img/database-pop.png' height='360px' width='540px' /></p>
+<p><img src='./public/img/database-pop.png' height='200px' width='360px' /></p>
+<p><img src='./public/img/db2.png' height='200px' width='360px' /></p>
 
 
 ## Stripe Checkout
