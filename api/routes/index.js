@@ -377,7 +377,7 @@ router.post('/groups',(req,res)=> {
 
 //Stripe
 router.post('/stripe',(req,res)=>{
-    var userToken = req.body.userToken;
+    var userToken = req.body.token;
     var stripeToken = req.body.stripeToken;
     var amount = req.body.amount;
     stripe.charges.create({

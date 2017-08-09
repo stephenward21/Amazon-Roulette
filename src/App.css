@@ -41,6 +41,12 @@
 
 .butt {
   margin: 10px;
+
+}
+
+.checkout, .spin-again {
+  display: none;
+  margin-left: 20px;
 }
 
 .the-category {
