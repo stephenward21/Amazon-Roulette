@@ -43,34 +43,38 @@ One-spin Amazon Product selector generated on a user-selected price range.  Land
 
 
 ### Landing/Home Pages
-<p align='center'><img src='./public/img/home.png' height='360px' width='360px'/></p>
 
 Outside of detailed user information pages (login, register, group, etc), the user is mainly focused on the Home Page.  This is where he/she can select a price from a dropdown, and take a spin.  The Home Page component is where we import our other components/containers, and handles a majority of the rendering you see throughout the application.
 
-<p align='center'><img src='./public/img/register.png' height= '360px' width="360px" /></p>
+<p align='center'><img src='./public/img/home.png' height='360px' width='540px'/></p>
+
 
 ### Register
 
 Creating an Account is dynamic and must be completed before a user can successfully spin and receive a product.  We store registration info in our database.  
 
-<p align='center'><img src='./public/img/login.png' height='360px' width='360px' /></p>
+<p align='center'><img src='./public/img/register.png' height= '360px' width="540px" /></p>
+
 
 ### Login
 
 Instead of having the user direct to a separate page for the login, we have a bootstrap modal that populates on click in the navbar.  Track user session with a token generated through bcrypt.
 
-<p align='center'><img src='./public/img/database-pop.png' height='360px' width='360px' /></p>
+<p align='center'><img src='./public/img/login.png' height='360px' width='540px' /></p>
 
 
 ## Amazon Database Product Injection
 
 We decided to select numerous Amazon BrowseNodes in each applicable product category, and from there wrote a sequel injection script to run through each BrowseNode, select all the products, and insert into the database.
 
-<p align='center'><img src='./public/img/stripe.png' height='360px' width='360px' /></p>
+<p align='center'><img src='./public/img/database-pop.png' height='360px' width='540px' /></p>
+
 
 ## Stripe Checkout
 
 Once the wheel has finished spinning and a product has been chosen from the selected category, the user will be given the options to check out or spin again.  On click of the check out button, the Stripe check out modal will be show.
+
+<p align='center'><img src='./public/img/stripe.png' height='360px' width='540px' /></p>
 
 
 
