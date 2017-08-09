@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Modal, Button, ButtonToolbar, Form, FormGroup, ControlLabel, FormControl, Col } from 'react-bootstrap';
 import {bindActionCreators} from 'redux';
+import {Link} from 'react-router-dom';
+
 
 class LogIn extends Component{
     constructor(props){
@@ -71,6 +73,7 @@ render() {
             </Col>
             <Col>
                 <ButtonToolbar className="login-buttons">
+                    <div><Link to="/register">Click here to register</Link></div>
                     <Button className="login-button" bsStyle="primary" onClick={this.handleLogin}>Login</Button>
                     <Button  className="close-button" onClick={this.props.closeFunction}>Close</Button>
                 </ButtonToolbar>

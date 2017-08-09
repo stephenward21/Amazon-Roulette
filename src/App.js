@@ -7,6 +7,7 @@ import Register from './components/Register'
 import Groups from './components/Groups'
 import Landing from './components/Landing'
 import { BrowserRouter as Router, Route} from 'react-router-dom'
+import LoginRequired from './components/LoginRequired';
 
 
 
@@ -18,10 +19,10 @@ class App extends Component {
             {/*<Navbar/>*/}
             <div className="main">
                 <Route exact path="/" component={Landing} />
-                <Route exact path="/home" render={() => (<div><Navbar /><Home /></div>)}/>
-                <Route exact path="/register" render={() => (<div><Navbar /><Register /></div>)}/>
-                <Route exact path="/login" render={() => (<div><Navbar /><Login /></div>)}/>
-                <Route exact path="/groups" render={() => (<div><Navbar /><Groups /></div>)}/>
+                <Route exact path="/home" render={(props) => (<div><Navbar /><Home history={props.history}/></div>)}/>
+                <Route exact path="/register" render={(props) => (<div><Navbar /><Register history={props.history} /></div>)}/>
+                <Route exact path="/login" render={(props) => (<div><Navbar /><Login history={props.history}/></div>)}/>
+                <Route exact path="/groups" render={(props) => (<div><Navbar /><Groups history={props.history}/></div>)}/>
             </div>
         </div>
       </Router>

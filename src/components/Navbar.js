@@ -6,6 +6,7 @@ import {Modal, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem, Form, FormGr
 import { LinkContainer } from 'react-router-bootstrap'
 import {bindActionCreators} from 'redux';
 import LoginAction from '../actions/LoginAction';
+import OpenNavAction from '../actions/OpenNavAction';
 import {connect} from 'react-redux';
 
 class NavBar extends Component{
@@ -40,9 +41,12 @@ class NavBar extends Component{
     }
 
     componentWillReceiveProps(nextProps){
+		console.log("New props coming into NavBar...")
+		console.log(nextProps);
 		console.log(nextProps.registerResponse.msg);
         if(nextProps.registerResponse.msg === 'loginSuccess'){
         	console.log('success');
+        	console.log(nextProps.registerResponse)
 			// this.props.getCart(nextProps.registerResponse.token)
 			this.close();
 			this.props.history.push('/home');
@@ -52,6 +56,9 @@ class NavBar extends Component{
 			this.setState({
 				registerMessage: "Please enter the correct email and password"
 			})
+		}else if(nextProps.openNav == 'open'){
+			this.open();
+			this.props.openNavAction('close')
 		}
     }
 
@@ -105,13 +112,15 @@ class NavBar extends Component{
 
 function mapStateToProps(state){
     return{
-        registerResponse: state.registerReducer
+        registerResponse: state.registerReducer,
+		openNav: state.openNavReducer
     }
 }
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators({
-        LoginAction: LoginAction
+        LoginAction: LoginAction,
+		openNavAction: OpenNavAction
     },dispatch)
 }
 

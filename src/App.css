@@ -87,26 +87,6 @@
   background-color: whitesmoke !important;
 }
 
-.group-container{
-  /*background-size: cover;*/
-  /*background-repeat: no-repeat;*/
-  /*background-image: url("https://images.pexels.com/photos/2143/lights-party-dancing-music.jpg?h=350&auto=compress&cs=tinysrgb");*/
-}
-
-.group-register-wrapper{
-  text-align: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url("https://images.pexels.com/photos/2143/lights-party-dancing-music.jpg?h=350&auto=compress&cs=tinysrgb");
-  background-color: #e7ed4e;
-}
-
-.group-form-whole{
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
-}
 
 .main{
   margin-top: 105px;
@@ -132,22 +112,56 @@
 }
 
 .jumbotron-group-text{
+  font-family: 'Sedgwick Ave', cursive;
+  color: #efead7;
+  text-shadow: 3px 2px #222222;
   padding-top: 5px !important;
   padding-bottom: 20px !important;
   text-align: center;
   margin-bottom: -20px;
+  background-color: #F74A27;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("http://25.media.tumblr.com/d9a2cc1590ca451ccf8a6cca2f0749b1/tumblr_n0qtnfkpG61rnvf38o1_500.gif");
+  /*background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzVvg34PG-oqKs5lwa5A90VQ8ZpMAoSp09ACxrXk8qREg4qlFf");*/
 
 }
 
+.group-form-whole{
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
 .group-register-wrapper{
+  height: 80vh;
   padding-top: 10px;
   text-align: center;
-  background-image: url("https://images.pexels.com/photos/358482/pexels-photo-358482.jpeg?h=350&auto=compress&cs=tinysrgb");
+  background-image: linear-gradient(rgba(35,35,35,0.6),rgba(35,35,35,0.6)), url("https://images.pexels.com/photos/33267/roulette-roulette-wheel-ball-turn.jpg?h=350&auto=compress&cs=tinysrgb");
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.group-register-button{
+  background-color: #F74A27;
+  border-radius: 25px;
+  focus: outline 0 !importnat;
+}
+
+.group-register-button:focus{
+  outline: 0 !important;
+}
+
+.group-register-groupName{
+  color: #efead7;
+  text-shadow: 3px 2px #222222;
+  font-size: 18px;
+}
+
+.group-register-password{
+  color: #efead7;
+  text-shadow: 3px 2px #222222;
+  font-size: 18px;
 }
 
 .landing-container {
@@ -177,6 +191,14 @@
   text-align: right;
   padding-left: 50px;
 }
+
+
+
+.Navbar{
+  background-color: #e7ed4e;
+}
+
+
 
 
 .empty-form{
