@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { DropdownButton, MenuItem, Jumbotron, ButtonToolbar, Button,Col  } from 'react-bootstrap';
+import { DropdownButton, MenuItem, Jumbotron, ButtonToolbar, Button,Col,Grid,Row  } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import drawRoulette from '../roulette';
 import textWheel from '../roulette';
@@ -284,8 +284,8 @@ class Home extends Component{
 				<Jumbotron className="home-jumbo-wrapper">
 				<h1 className="home-page-title">AMAZON ROULETTE</h1>
 				<p className="home-page-text">The second most fun you&#39;ll have playing Roulette</p>
-				<p className="home-page-text"> Take a close look at the wheel of categories below to get an idea of what type of product could soon be yours!
-					When you are ready, choose a price range from our dropdown and then click spin!  From there you will be prompted to checkout using our secure Stripe payment solution.</p>
+				{/*<p className="home-page-text"> Take a close look at the wheel of categories below to get an idea of what type of product could soon be yours!*/}
+					{/*When you are ready, choose a price range from our dropdown and then click spin!  From there you will be prompted to checkout using our secure Stripe payment solution.</p>*/}
 				<div className="buttons">
 				   	<DropdownButton bsStyle="primary" className="butt" title={this.state.formattedPrice} id={`dropdown-price`} onSelect={this.handlePrice}>
 				     <MenuItem eventKey="500 AND 1500">$5 - $15</MenuItem>
@@ -302,14 +302,31 @@ class Home extends Component{
 					<Button className="spin-again" bsStyle="primary" onClick={this.resetWheel}>Spin Again!</Button>
 				</div>
 				</Jumbotron>
-
-				{/*<div className="home-body-img1" md={3}>*/}
-					{/*<img src="/img/car_img1.jpeg"/>*/}
-				{/*</div>*/}
-				<Col className="canvas-container" mdOffset={4} md={4}>
+				<Col className="canvas-container"  md={4}>
 					<canvas className="canvas" width="500px" height="500px" id="canvas"/>
 					<h1 className="home-the-category">{this.state.options}</h1>
 				</Col>
+				<Grid className="home-body-container" md={12}>
+					<Row className="home-body" >
+						<Col  className="home-body-pic1" md={5}>
+							<img src="/img/tools_img6" />
+						</Col>
+						<Col  className="home-body-pic2" md={2}>
+							<img src="/img/phones_img2.jpeg" />
+						</Col>
+						<Col  className="home-body-pic2" md={2}>
+							<img src="/img/beauty_img5.jpeg" />
+						</Col>
+					</Row>
+					<Row>
+						<Col className="home-body-pic3" md={6}>
+							<img src="/img/books_img3.jpeg" />
+						</Col>
+						<Col className="home-body-pic4" md={2}>
+							<img src="/img/minions_img4.jpeg" />
+						</Col>
+					</Row>
+				</Grid>
 			</div>
 		)
 	}

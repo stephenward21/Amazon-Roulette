@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Grid,Col,Text,Form,FormGroup,FormControl,Button} from 'react-bootstrap'
+import {Link} from 'react-router-dom';
 
 class Landing extends Component{
     constructor(props){
@@ -49,9 +50,11 @@ class Landing extends Component{
                                 </FormGroup>
                             </Form>
                             <Col mdOffset={4} md={7} className="landing-body-button-container">
-                                <Button bsStyle="default" bsSize="small" type="submit" className="landing-body-button" href="/home">
+                                <Link to="/home">
+                                    <Button bsStyle="default" bsSize="small" type="submit" className="landing-body-button">
                                     LET ME SPIN!
-                                </Button>
+                                    </Button>
+                                </Link>
                             </Col>
                         </Col>
                     </row>
