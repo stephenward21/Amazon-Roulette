@@ -23,7 +23,6 @@ class Home extends Component{
 	}
 	componentDidMount(props) {
 		drawRoulette();
-		console.log(this.drawRoulette);
 		this.drawRoulette();
 		// this.getCategory();
 

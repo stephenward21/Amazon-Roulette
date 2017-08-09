@@ -95,13 +95,27 @@ router.get('/categoryFinder',function(req,res,next){
             // console.log(results)
             var randomRes = results[Math.floor(Math.random()*results.length)];
             console.log(randomRes)
-            var randomAsin = randomRes.ASIN
-            var randomTit = randomRes.Title;
+            var randomAsin = randomRes.ASIN;
+            var randomTitle = randomRes.Title;
             var randomPrice = randomRes.Price;
-            const insertProd = `INSERT INTO user (ASIN, Title, Price) VALUES (?,?,?)`
-            connection.query(insertProd, [randomAsin, randomTit, randomPrice], (error2, results2) =>{
-                console.log(results2)
+
+            const getUidQuery = `SELECT id from user WHERE token = ?`
+            connection.query(getUidQuery,[req.body.token],(error,results)=> {
+                console.log(req.body.token)
+                if (error) throw error;
+                if (results.length === 0) {
+                    res.json({msg: "badToken"})
+                } else {
+                    const insertProd = `INSERT INTO user (uid, ASIN, Title, Price) VALUES (?,?,?,?)`;
+                    connection.query(insertProd, [randomAsin, randomTit, randomPrice], (error2, results2) => {
+                        console.log(results2)
+
+                    });
+                }
             })
+        })
+});
+
             // client.cartCreate({
             //   items:[{
             //     ASIN: randomAsin,
@@ -115,16 +129,14 @@ router.get('/categoryFinder',function(req,res,next){
             // }).catch(function(err){
             //   res.json(err);
             // });
-        });
+        // });
     
         
     
     
     
-});
 
 
-    // }
 //
 //     var categories = {
 //         Books:['51546011', '16266351', '16266361', '16266381', '16266391', '16266401', '16266411', '16266421', '16266431', '16266441', '16266461', '16266471', '16266481', '16266491', '16266501', '16266511', '16266521', '16266531', '16266551', '16266541', '16266561'],
@@ -258,9 +270,10 @@ router.post('/register',(req,res)=>{
         ()=>{
             var insertIntoCust = "INSERT INTO customers (name, address, city, state) VALUES (?,?,?,?)";
             connection.query(insertIntoCust,[name,address,city,state], (error,results)=>{
+                const newID = results.insertId;
                 var token = randToken.uid(40);
-                var insertQuery = 'INSERT INTO user (email, password, token) VALUES (?,?,?)';
-                connection.query(insertQuery, [email, password, token], (error2, results2)=>{
+                var insertQuery = 'INSERT INTO user (email, uid, password, token) VALUES (?,?,?,?)';
+                connection.query(insertQuery, [email, newID, password, token], (error2, results2)=>{
                      console.log(results2)
                     if(error2){
                         res.json({
@@ -363,25 +376,25 @@ router.post('/groups',(req,res)=> {
 });
 
 //Stripe
-// router.post('/stripe',(req,res)=>{
-//     var userToken = req.body.userToken;
-//     var stripeToken = req.body.stripeToken;
-//     var amount = req.body.amount;
-//     stripe.cahrges.create({
-//         amount: parseInt(amount),
-//         currency: 'usd',
-//         source: stripeToken,
-//         description: "Charge for Amazon Roulette"
-//     },(error,charge)=>{
-//         if(error){
-//             res.json({
-//                 msg: error
-//             })
-//         }else{
-//
-//         }
-//     })
-// });
+router.post('/stripe',(req,res)=>{
+    var userToken = req.body.userToken;
+    var stripeToken = req.body.stripeToken;
+    var amount = req.body.amount;
+    stripe.charges.create({
+        amount: parseInt(amount),
+        currency: 'usd',
+        source: stripeToken,
+        description: "Charge for Amazon Roulette"
+    },(error,charge)=>{
+        if(error){
+            res.json({
+                msg: error
+            })
+        }else{
+
+        }
+    })
+});
 
 
 module.exports = router;

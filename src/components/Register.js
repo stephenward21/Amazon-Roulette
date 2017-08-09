@@ -63,7 +63,8 @@ class Register extends Component {
 	}
 
 	componentWillReceiveProps(nextProps){
-		console.log(nextProps.registerResponse)
+		console.log(nextProps.registerResponse);
+		console.log(this.props.history);
 		if(nextProps.registerResponse.msg === 'userInserted'){
 			this.props.history.push('/home');
 		}else if(nextProps.registerResponse.msg === 'userAlreadyExists'){
