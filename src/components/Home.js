@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { DropdownButton, MenuItem, Jumbotron, ButtonToolbar, Button,  } from 'react-bootstrap';
+import { DropdownButton, MenuItem, Jumbotron, ButtonToolbar, Button,Col  } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import drawRoulette from '../roulette';
 import textWheel from '../roulette';
@@ -281,7 +281,7 @@ class Home extends Component{
 		
 		return(
 			<div className="home-wrapper">
-				<Jumbotron id="jumbo">
+				<Jumbotron className="home-jumbo-wrapper">
 				<h1 className="home-page-title">AMAZON ROULETTE</h1>
 				<p className="home-page-text">The second most fun you&#39;ll have playing Roulette</p>
 				<p className="home-page-text"> Take a close look at the wheel of categories below to get an idea of what type of product could soon be yours!
@@ -300,12 +300,16 @@ class Home extends Component{
 				   	<input className="btn btn-primary" type="button" value="spin" id='spin' onClick={this.drawRoulette.spin} />
 				    <Button className="checkout" bsStyle="primary" onClick={this.makePayment}>Check Out!</Button>
 					<Button className="spin-again" bsStyle="primary" onClick={this.resetWheel}>Spin Again!</Button>
-				  
 				</div>
 				</Jumbotron>
 
-				<canvas className="canvas" width="500px" height="500px" id="canvas"/>
-				<h1 className="the-category">{this.state.options}</h1>
+				{/*<div className="home-body-img1" md={3}>*/}
+					{/*<img src="/img/car_img1.jpeg"/>*/}
+				{/*</div>*/}
+				<Col className="canvas-container" mdOffset={4} md={4}>
+					<canvas className="canvas" width="500px" height="500px" id="canvas"/>
+					<h1 className="home-the-category">{this.state.options}</h1>
+				</Col>
 			</div>
 		)
 	}

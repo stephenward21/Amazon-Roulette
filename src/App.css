@@ -1,3 +1,19 @@
+a, button {
+  border: none !important;
+}
+
+a:focus,a:active{
+  outline: none !important;
+}
+
+.btn:focus,.btn:active {
+   outline: none !important;
+}
+
+button:focus{
+    background-color: #F74A27;
+    outline:0;
+}
 
 .App-header {
   background-color: #222;
@@ -25,11 +41,10 @@
 
 
 .canvas{
+  text-align: center;
   display: block;
-  background-color: #006400;
+  background-image:  linear-gradient(rgba(35,35,35,0.5),rgba(35,35,35,0.5)),url("https://s-media-cache-ak0.pinimg.com/736x/c6/a0/dc/c6a0dc6df81b08f66d218ee4748cbeaf--casino-room-casino-theme.jpg");
   border-radius: 50px;
-  margin: auto;
-  margin-bottom: 50px;
   box-shadow: 15px 15px
 }
 
@@ -48,10 +63,6 @@
 .checkout, .spin-again {
   display: none;
   margin-left: 20px;
-}
-
-.the-category {
-  display: none; 
 }
 
 .register-wrapper{
@@ -82,6 +93,11 @@
   margin-top: 30px;
 }
 
+.register-form-button{
+  background-color: #F74A27;
+  color: #efead7;
+}
+
 .empty-form {
   width: 600px;
   background-color: whitesmoke !important;
@@ -92,19 +108,42 @@
   margin-top: 105px;
 }
 
+.home-jumbo-wrapper{
+  background-color: #F74A27;
+}
+
+.home-wrapper{
+
+
+}
+
 .home-page-title{
   text-align: center;
-  font-family: 'Permanent Marker', cursive;
-  color: #FBC02D !important;
+  font-family: 'Sedgwick Ave', cursive;
+  color: #efead7 !important;
+  text-shadow: 3px 2px #222222;
 }
 
 .home-page-text{
   text-align: center;
 }
 
+.home-the-category {
+  display: none;
+  font-size: 20px;
+  font-family: 'Sedgwick Ave', cursive;
+  color: #efead7 !important;
+  text-shadow: 3px 2px #222222;
+}
+
 .login-buttons{
   margin-top: 70px;
   margin-left: 80px;
+}
+
+.login-button{
+  color: #efead7;
+  background-color: #F74A27;
 }
 
 .email-title{
@@ -119,9 +158,9 @@
   padding-bottom: 20px !important;
   text-align: center;
   margin-bottom: -20px;
-  background-color: #F74A27;
-  background-size: cover;
-  background-repeat: no-repeat;
+  /*background-color: none;*/
+  /*background-size: cover;*/
+  /*background-repeat: no-repeat;*/
   /*background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzVvg34PG-oqKs5lwa5A90VQ8ZpMAoSp09ACxrXk8qREg4qlFf");*/
 
 }
@@ -134,22 +173,35 @@
 }
 
 .group-register-wrapper{
-  height: 80vh;
+  height: 100vh;
   padding-top: 10px;
   text-align: center;
-  background-image: linear-gradient(rgba(35,35,35,0.6),rgba(35,35,35,0.6)), url("https://images.pexels.com/photos/33267/roulette-roulette-wheel-ball-turn.jpg?h=350&auto=compress&cs=tinysrgb");
+  background-image: linear-gradient(rgba(35,35,35,0.5),rgba(35,35,35,0.5)), url("https://images.pexels.com/photos/33267/roulette-roulette-wheel-ball-turn.jpg?h=350&auto=compress&cs=tinysrgb");
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.group-h1-text{
+  font-family: 'Sedgwick Ave', cursive;
+  color: #efead7;
+  text-shadow: 3px 2px #222222;
+  font-size: 70px;
 }
 
 .group-register-button{
   background-color: #F74A27;
   border-radius: 25px;
-  focus: outline 0 !importnat;
+  border:  none !important;
+  color: #efead7;
+}
+
+.group-register-button:hover{
+  background-color: #F74A27 !important;
 }
 
 .group-register-button:focus{
-  outline: 0 !important;
+  background-color: #F74A27 !important;
+
 }
 
 .group-register-groupName{
@@ -216,6 +268,8 @@
   background-color: #F74A27;
   color: white;
   margin-top: 15px;
+  border-radius: 20px;
+  font-size: 19px;
 }
 
 .landing-body-button-wrapper{
@@ -225,4 +279,8 @@
 
 .landing-container{
   margin-top: -105px;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
+  background-color: #222222 !important;
 }

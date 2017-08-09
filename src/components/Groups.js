@@ -59,16 +59,19 @@ class Groups extends Component{
     render(){
         return(
             <div id="group-container">
-                <Jumbotron className="jumbotron-group-text">
-                    <h1>CREATE A GROUP, BRING THE PARTY</h1>
+                {/*<div className="jumbotron-group-text" md={6} mdOffset={4}>*/}
+                    {/*<h1>CREATE A GROUP,</h1>*/}
+                    {/*<h1>BRING THE PARTY</h1>*/}
                     {/*<p>From office parties and White Elephant budgets to bachelor/bachelorette gifts*/}
                         {/*and baby showers, AmazonRoulette raises the group to another level!!</p>*/}
                     {/*<p>Create a Group </p>*/}
                     {/*<p>Invite friends, family, co-workers</p>*/}
                     {/*<p>Leave the gifts to the Wheel!</p>*/}
                     {/*<p><Button bsStyle="primary">GET STARTED</Button></p>*/}
-                </Jumbotron>
+                {/*</div>*/}
                 <div className='group-register-wrapper'>
+                    <h1 className="group-h1-text">CREATE A GROUP,</h1>
+                    <h1 className="group-h1-text">BRING THE PARTY</h1>
                     <h1 className="text-danger"></h1>
                     <Form horizontal className="group-form-whole" onSubmit={this.handleGroup}>
                         <FormGroup  controlId="formHorizontalName" validationState={this.state.groupNameError}>
@@ -90,7 +93,7 @@ class Groups extends Component{
 
                         <FormGroup>
                             <Col mdOffset={5} md={4}>
-                                <Button className="group-register-button" bsStyle="primary" bsSize="large" type="submit">
+                                <Button className="group-register-button" bsStyle="default" bsSize="large" type="submit">
                                     SIGN UP!
                                 </Button>
                             </Col>

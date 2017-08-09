@@ -74,7 +74,7 @@ render() {
             <Col>
                 <ButtonToolbar className="login-buttons">
                     <div><Link to="/register">Click here to register</Link></div>
-                    <Button className="login-button" bsStyle="primary" onClick={this.handleLogin}>Login</Button>
+                    <Button className="login-button" bsStyle="default" onClick={this.handleLogin}>Login</Button>
                     <Button  className="close-button" onClick={this.props.closeFunction}>Close</Button>
                 </ButtonToolbar>
             </Col>
