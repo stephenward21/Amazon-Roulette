@@ -67,7 +67,7 @@ router.get('/home', function(req, res, next) {
 });
 
 //Item Finder
-router.get('/categoryFinder',function(req,res,next){
+router.post('/categoryFinder',function(req,res,next){
     var tools = "Tools & Hardware";
     var games = "Video Games";
     var kids = "Kids Toys";
@@ -77,8 +77,8 @@ router.get('/categoryFinder',function(req,res,next){
         games: "VideoGames",
         kids: "Toys"
     }
-    var category = req.query.category;
-    var price = req.query.price;
+    var category = req.body.category;
+    var price = req.body.price;
     // console.log(price)
 
     if (category == tools){
@@ -88,7 +88,7 @@ router.get('/categoryFinder',function(req,res,next){
     }else if(category == kids){
         category = newCat.kids
     }else{
-        category = req.query.category
+        category = req.body.category
     }
     const money =  `SELECT * FROM ${category} WHERE Price BETWEEN ${price}`;
         connection.query(money, (error,results)=>{
@@ -99,17 +99,22 @@ router.get('/categoryFinder',function(req,res,next){
             var randomTitle = randomRes.Title;
             var randomPrice = randomRes.Price;
 
-            const getUidQuery = `SELECT id from user WHERE token = ?`
+            const getUidQuery = `SELECT id from user WHERE token = ?`;
             connection.query(getUidQuery,[req.body.token],(error,results)=> {
+                console.log("++++=+==================")
                 console.log(req.body.token)
                 if (error) throw error;
                 if (results.length === 0) {
                     res.json({msg: "badToken"})
                 } else {
-                    const insertProd = `INSERT INTO user (uid, ASIN, Title, Price) VALUES (?,?,?,?)`;
-                    connection.query(insertProd, [randomAsin, randomTit, randomPrice], (error2, results2) => {
-                        console.log(results2)
-
+                    const insertProd = `UPDATE user SET ASIN=?, Title=?, Price=? WHERE id=?`;
+                    connection.query(insertProd, [randomAsin, randomTitle, randomPrice, results[0].id], (error2, results2) => {
+                        console.log(error2);
+                        console.log(results2);
+                        res.json({
+                            msg: "foundToken",
+                            randomPrice: randomPrice
+                        })
                     });
                 }
             })
@@ -377,7 +382,7 @@ router.post('/groups',(req,res)=> {
 
 //Stripe
 router.post('/stripe',(req,res)=>{
-    var userToken = req.body.token;
+    var userToken = req.body.userToken;
     var stripeToken = req.body.stripeToken;
     var amount = req.body.amount;
     stripe.charges.create({
@@ -391,7 +396,9 @@ router.post('/stripe',(req,res)=>{
                 msg: error
             })
         }else{
-
+            res.json({
+                msg: 'paymentSuccess'
+            })
         }
     })
 });

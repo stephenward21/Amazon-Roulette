@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { DropdownButton, MenuItem, Jumbotron, ButtonToolbar, Button } from 'react-bootstrap';
+import { DropdownButton, MenuItem, Jumbotron, ButtonToolbar, Button,  } from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 import drawRoulette from '../roulette';
 import textWheel from '../roulette';
-import {connect} from 'react-redux';
+import {connect} from 'react-redux'
+import OpenNavAction from '../actions/OpenNavAction';
+import {bindActionCreators} from 'redux';
 
 
 
@@ -12,14 +15,15 @@ class Home extends Component{
 		super(props);
 		this.state = {
 			options: "",
-			price: ""
+			price: "",
+			itemCost: ""
 		};
-
+		this.makePayment = this.makePayment.bind(this);
 		this.drawRoulette = this.drawRoulette.bind(this); 
 		// this.getCategory = this.getCategory.bind(this);
 		this.handleSelect = this.handleSelect.bind(this);
 		this.handlePrice = this.handlePrice.bind(this);
-
+		this.resetWheel = this.resetWheel.bind(this);
 	}
 	componentDidMount(props) {
 		drawRoulette();
@@ -28,17 +32,25 @@ class Home extends Component{
 
 	}
 
+	resetWheel(){
+			$('.butt').css({'display': 'inline-block'})
+			$('#spin').css({'display': 'inline-block'})
+			$('.checkout').css({'display': 'none'})
+			$('.spin-again').css({'display': 'none'})
+
+	}
+	
 	makePayment() {
         var handler = window.StripeCheckout.configure({
-            key: 'pk_test_K9L17worNm0z7lHpdssTpwqr',
+            key: 'pk_test_QQmahuQL0QUgjAheFobNmmvW',
             locale: 'auto',
             image: '/img/roulette-icon.png',
             token: (token)=> {
             	console.log(token);
                 var theData = {
-                    amount: '',
+                    amount: this.state.itemCost,
                     stripeToken: token.id,
-                    userToken: this.props.loginInfo.token,
+                    userToken: this.props.login.token,
                 }
                 $.ajax({
                     method: 'POST',
@@ -55,11 +67,12 @@ class Home extends Component{
         handler.open({
             name: "Pay Now",
             description: 'Pay Now',
-            amount: '',
+            amount: this.state.itemCost,
         })
     }
 
-	drawRoulette(){
+	drawRoulette(timeSpin){
+		console.log(timeSpin)
 		var options = ["Electronics",  "Books", "Tools & Hardware", "Beauty", "Video Games", "Music", "Kids Toys", "Baby" ]
 		var startAngle = 0;
 		var arc = Math.PI / (options.length / 2);
@@ -72,6 +85,12 @@ class Home extends Component{
 		var ctx;
 
 		document.getElementById("spin").addEventListener("click", spin);
+		if(timeSpin == 'again'){
+			console.log("timeSpin!!!!!")
+			spin();
+			$('#canvas').css({'width': '750px' , 'height': '750px'})
+			$('#jumbo').css({'display': 'none'})
+		}
 		$('#spin').click(function(){
 			$('#canvas').css({'width': '750px' , 'height': '750px'})
 			$('#jumbo').css({'display': 'none'})
@@ -205,10 +224,21 @@ class Home extends Component{
 		  }
 		  // console.log(this.props.categoryAction(this.state.options));
 		  // this.state.options
-		  $.getJSON(`http://localhost:3000/categoryFinder?category=${this.state.options}&price=${this.state.price}`,(serverData)=>{
-		 	console.log(serverData)
-
-		  });
+			console.log(this.props.login);
+			var thePromise = $.ajax({
+				method: "POST",
+				url: window.hostAddress +'/categoryFinder',
+				data: {
+					category: this.state.options,
+					price: this.state.price,
+					token: this.props.login.token
+				}
+			}).then((data)=>{
+		  	console.log(data)
+				this.setState({
+					itemCost: data.randomPrice
+				})
+			})
 		};
 
 		function easeOut(t, b, c, d) {
@@ -249,11 +279,21 @@ class Home extends Component{
 				categoryMessage: ""
 			})
 		}
+		if(this.props.login.token == undefined){
+			//open the modal
+			console.log("Calling openNav action")
+			this.props.openNav('open');
+		}
 	}
 
 
 	render(){
-
+		console.log(this.props.login)
+		if(this.props.login.token == undefined){
+			//open the modal
+			console.log("Calling openNav action")
+			this.props.openNav('open');
+		}
 
 		
 		return(
@@ -275,8 +315,8 @@ class Home extends Component{
 				     <MenuItem eventKey="15001 AND 20000">$150 - $200</MenuItem>
 				   	</DropdownButton>
 				   	<input className="btn btn-primary" type="button" value="spin" id='spin' onClick={this.drawRoulette.spin} />
-				    <Button className="checkout"bsStyle="primary" onClick={this.makePayment}>Check Out!</Button>
-				    <Button className="spin-again"bsStyle="primary" href="/home">Spin Again!</Button>
+				    <Button className="checkout" bsStyle="primary" onClick={this.makePayment}>Check Out!</Button>
+					<Button className="spin-again" bsStyle="primary" onClick={this.resetWheel}>Spin Again!</Button>
 				  
 				</div>
 				</Jumbotron>
@@ -293,14 +333,15 @@ class Home extends Component{
 function mapStateToProps(state){
 	return{
 		categoryResponse: state.categoryReducer,
-		priceResponse: state.categoryReducer
+		priceResponse: state.categoryReducer,
+		login: state.registerReducer
 	}
 }
 
-// function mapDispatchToProps(dispatch){
-// 	return bindActionCreators({
-// 		categoryAction: CategoryAction
-// 	},dispatch)
-// }
+function mapDispatchToProps(dispatch){
+	return bindActionCreators({
+		openNav: OpenNavAction
+	},dispatch)
+}
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

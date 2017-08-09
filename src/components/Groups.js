@@ -61,18 +61,18 @@ class Groups extends Component{
             <div id="group-container">
                 <Jumbotron className="jumbotron-group-text">
                     <h1>CREATE A GROUP, BRING THE PARTY</h1>
-                    <p>From office parties and White Elephant budgets to bachelor/bachelorette gifts
-                        and baby showers, AmazonRoulette raises the group to another level!!</p>
-                    <p>Create a Group </p>
-                    <p>Invite friends, family, co-workers</p>
-                    <p>Leave the gifts to the Wheel!</p>
-                    <p><Button bsStyle="primary">GET STARTED</Button></p>
+                    {/*<p>From office parties and White Elephant budgets to bachelor/bachelorette gifts*/}
+                        {/*and baby showers, AmazonRoulette raises the group to another level!!</p>*/}
+                    {/*<p>Create a Group </p>*/}
+                    {/*<p>Invite friends, family, co-workers</p>*/}
+                    {/*<p>Leave the gifts to the Wheel!</p>*/}
+                    {/*<p><Button bsStyle="primary">GET STARTED</Button></p>*/}
                 </Jumbotron>
                 <div className='group-register-wrapper'>
                     <h1 className="text-danger"></h1>
                     <Form horizontal className="group-form-whole" onSubmit={this.handleGroup}>
                         <FormGroup  controlId="formHorizontalName" validationState={this.state.groupNameError}>
-                            <Col  md={2} componentClass={ControlLabel} >
+                            <Col  className="group-register-groupName"md={2} componentClass={ControlLabel} >
                                  Group Name
                             </Col>
                             <Col  md={6}>
@@ -80,7 +80,7 @@ class Groups extends Component{
                             </Col>
                         </FormGroup>
                         <FormGroup controlId="formHorizontalName">
-                            <Col  md={2} componentClass={ControlLabel}>
+                            <Col  className="group-register-password" md={2} componentClass={ControlLabel}>
                                 Password
                             </Col>
                             <Col md={6}>
@@ -89,8 +89,8 @@ class Groups extends Component{
                         </FormGroup>
 
                         <FormGroup>
-                            <Col mdOffset={4} md={4}>
-                                <Button className="group-register-button" bsStyle="primary" bsSize="small" type="submit">
+                            <Col mdOffset={5} md={4}>
+                                <Button className="group-register-button" bsStyle="primary" bsSize="large" type="submit">
                                     SIGN UP!
                                 </Button>
                             </Col>
