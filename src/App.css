@@ -277,7 +277,8 @@ button:focus{
 
 .canvas-container{
   z-index: 6;
-  margin-left: 40%;
+  width: 100%;
+  text-align: center;
 }
 
 .canvas {
@@ -286,7 +287,7 @@ button:focus{
   background-image: linear-gradient(rgba(35, 35, 35, 0.5), rgba(35, 35, 35, 0.5)), url("https://s-media-cache-ak0.pinimg.com/736x/c6/a0/dc/c6a0dc6df81b08f66d218ee4748cbeaf--casino-room-casino-theme.jpg");
   border-radius: 50px;
   box-shadow: 15px 15px;
-  position: absolute;
+  
 }
 
 .home-body-container{
